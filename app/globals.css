@@ -742,6 +742,156 @@ video {
   line-height: 1.45;
 }
 
+.kinetic-break {
+  position: relative;
+  display: grid;
+  width: 100%;
+  min-height: 76svh;
+  place-items: center;
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(circle at center, rgba(199, 255, 50, 0.09), transparent 32%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    #050606;
+  background-size: auto, 56px 56px, 56px 56px, auto;
+}
+
+.kinetic-break::before,
+.kinetic-break::after {
+  position: absolute;
+  z-index: 5;
+  width: 38vw;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--acid));
+  filter: drop-shadow(0 0 10px rgba(199, 255, 50, 0.75));
+  content: "";
+  animation: tracer-sweep 4.8s ease-in-out infinite alternate;
+}
+
+.kinetic-break::before {
+  top: 22%;
+  left: -10%;
+}
+
+.kinetic-break::after {
+  right: -10%;
+  bottom: 22%;
+  transform: rotate(180deg);
+  animation-delay: -2.4s;
+}
+
+.kinetic-break__stage {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.kinetic-break__word {
+  position: absolute;
+  z-index: 2;
+  color: transparent;
+  font: 900 clamp(5.5rem, 18vw, 20rem)/0.75 Impact, "Arial Narrow", sans-serif;
+  letter-spacing: -0.045em;
+  white-space: nowrap;
+  -webkit-text-stroke: 1.2px rgba(241, 243, 237, 0.31);
+}
+
+.kinetic-break__word--top {
+  top: 3%;
+  left: -8%;
+  animation: kinetic-word-left 8s ease-in-out infinite alternate;
+}
+
+.kinetic-break__word--bottom {
+  right: -10%;
+  bottom: 4%;
+  color: rgba(199, 255, 50, 0.065);
+  -webkit-text-stroke-color: rgba(199, 255, 50, 0.42);
+  animation: kinetic-word-right 8s ease-in-out infinite alternate;
+}
+
+.signal-tunnel {
+  position: relative;
+  z-index: 4;
+  width: min(48vw, 680px);
+  aspect-ratio: 1;
+}
+
+.signal-tunnel i {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(199, 255, 50, 0.42);
+  border-radius: 50%;
+  opacity: 0;
+  animation: tunnel-wave 4.2s ease-out infinite;
+}
+
+.signal-tunnel i:nth-child(2) { animation-delay: -0.7s; }
+.signal-tunnel i:nth-child(3) { animation-delay: -1.4s; }
+.signal-tunnel i:nth-child(4) { animation-delay: -2.1s; }
+.signal-tunnel i:nth-child(5) { animation-delay: -2.8s; }
+.signal-tunnel i:nth-child(6) { animation-delay: -3.5s; }
+
+.signal-tunnel span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  width: 86px;
+  aspect-ratio: 1;
+  place-items: center;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--acid);
+  border-radius: 50%;
+  background: #070908;
+  color: var(--acid);
+  box-shadow: 0 0 70px rgba(199, 255, 50, 0.24);
+  font-size: 2.1rem;
+  animation: core-breathe 2.4s ease-in-out infinite;
+}
+
+.signal-tracer {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  left: 50%;
+  width: min(72vw, 1100px);
+  height: 1px;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(90deg, transparent, rgba(199, 255, 50, 0.55), transparent);
+}
+
+.signal-tracer b {
+  position: absolute;
+  top: -4px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--acid);
+  box-shadow: 0 0 18px var(--acid);
+  animation: data-run 3.6s linear infinite;
+}
+
+.signal-tracer b:nth-child(2) { animation-delay: -0.72s; }
+.signal-tracer b:nth-child(3) { animation-delay: -1.44s; }
+.signal-tracer b:nth-child(4) { animation-delay: -2.16s; }
+.signal-tracer b:nth-child(5) { animation-delay: -2.88s; }
+
+.kinetic-break > p {
+  position: absolute;
+  right: 4vw;
+  bottom: 28px;
+  z-index: 7;
+  margin: 0;
+  color: var(--acid);
+  font: 800 0.62rem/1 "Arial Narrow", Arial, sans-serif;
+  letter-spacing: 0.23em;
+}
+
 .scope {
   position: relative;
   display: grid;
@@ -1019,7 +1169,7 @@ video {
 
 .profile__contact {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1px;
   margin-top: 1px;
   padding: 1px;
@@ -1149,6 +1299,75 @@ video {
   to { transform: translateX(-50%); }
 }
 
+@keyframes kinetic-word-left {
+  from { transform: translateX(-3vw); }
+  to { transform: translateX(12vw); }
+}
+
+@keyframes kinetic-word-right {
+  from { transform: translateX(4vw); }
+  to { transform: translateX(-12vw); }
+}
+
+@keyframes tunnel-wave {
+  0% { opacity: 0; transform: scale(0.08) rotate(0deg); }
+  16% { opacity: 0.75; }
+  100% { opacity: 0; transform: scale(1) rotate(100deg); }
+}
+
+@keyframes core-breathe {
+  0%, 100% { transform: translate(-50%, -50%) scale(0.92); box-shadow: 0 0 35px rgba(199, 255, 50, 0.12); }
+  50% { transform: translate(-50%, -50%) scale(1.08); box-shadow: 0 0 90px rgba(199, 255, 50, 0.35); }
+}
+
+@keyframes data-run {
+  from { left: 0; opacity: 0; }
+  10%, 90% { opacity: 1; }
+  to { left: 100%; opacity: 0; }
+}
+
+@keyframes tracer-sweep {
+  from { opacity: 0.22; transform: translateX(-8vw); }
+  to { opacity: 0.82; transform: translateX(16vw); }
+}
+
+@keyframes view-rise {
+  from { opacity: 0.16; transform: translateY(70px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes view-unmask {
+  from { clip-path: inset(0 0 100% 0); transform: scale(0.975); }
+  to { clip-path: inset(0 0 0 0); transform: scale(1); }
+}
+
+@supports (animation-timeline: view()) {
+  .section-heading,
+  .project__header,
+  .project__footer,
+  .scope__intro,
+  .record__copy,
+  .profile__content {
+    animation: view-rise both ease-out;
+    animation-timeline: view();
+    animation-range: entry 5% cover 28%;
+  }
+
+  .project__media,
+  .record__image,
+  .profile__portrait {
+    animation: view-unmask both cubic-bezier(0.2, 0.75, 0.15, 1);
+    animation-timeline: view();
+    animation-range: entry 2% cover 35%;
+  }
+
+  .capability-grid li {
+    animation: view-rise both ease-out;
+    animation-timeline: view();
+    animation-range: entry 0% cover 22%;
+  }
+}
+
 @media (max-width: 1100px) {
   .hero__copy { width: 92vw; }
   .motion-engine { right: -22vw; opacity: 0.62; }
@@ -1235,6 +1454,11 @@ video {
   .corner--bl { bottom: 9px; left: 9px; }
   .corner--br { right: 9px; bottom: 9px; }
   .project__footer { gap: 28px; }
+  .kinetic-break { min-height: 64svh; }
+  .kinetic-break__word { font-size: 29vw; }
+  .signal-tunnel { width: 82vw; }
+  .signal-tracer { width: 92vw; }
+  .kinetic-break > p { right: 18px; bottom: 20px; font-size: 0.48rem; letter-spacing: 0.13em; }
   .capability-grid { grid-template-columns: 1fr; }
   .capability-grid li { min-height: 190px; }
   .capability-grid h3 { margin-top: 54px; }

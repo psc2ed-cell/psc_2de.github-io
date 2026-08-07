@@ -3,7 +3,7 @@ const projects = [
     index: "01",
     title: "YU7 GT",
     english: "XIAOMI YU7 GT / SPEC FILM",
-    category: "汽车概念广告",
+    category: "非商用汽车概念 TVC",
     duration: "00:40",
     format: "1080P / 24 FPS",
     note: "个人概念作品 / 非官方",
@@ -31,7 +31,7 @@ const projects = [
     index: "03",
     title: "升级有奖",
     english: "UPGRADE REWARDED",
-    category: "古装玄幻漫剧",
+    category: "上线漫剧 · 古装玄幻",
     duration: "01:59",
     format: "1080P / 25 FPS",
     note: "展示版含原始水印",
@@ -209,6 +209,19 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="kinetic-break" aria-label="动态视觉过场：保持向前">
+          <div className="kinetic-break__stage" aria-hidden="true">
+            <span className="kinetic-break__word kinetic-break__word--top">KEEP</span>
+            <span className="kinetic-break__word kinetic-break__word--bottom">MOVING</span>
+            <div className="signal-tunnel">
+              <i /><i /><i /><i /><i /><i />
+              <span>∞</span>
+            </div>
+            <div className="signal-tracer"><b /><b /><b /><b /><b /></div>
+          </div>
+          <p>IMAGINATION → FRAME → MOTION → STORY</p>
+        </section>
+
         <section className="scope section" id="scope" aria-labelledby="scope-title">
           <div className="scope__intro">
             <span className="section-index">02 / CREATIVE RANGE</span>
@@ -292,9 +305,8 @@ export default function Home() {
             </div>
 
             <div className="profile__contact" aria-label="联系方式预留区域">
-              <div><span>EMAIL</span><strong>[ 你的邮箱 ]</strong></div>
-              <div><span>WECHAT</span><strong>[ 你的微信 ]</strong></div>
-              <div><span>SOCIAL</span><strong>[ 社交平台链接 ]</strong></div>
+              <div><span>EMAIL / 邮箱</span><strong>[ 你的邮箱 ]</strong></div>
+              <div><span>PHONE / 手机号</span><strong>[ 你的手机号 ]</strong></div>
             </div>
           </div>
         </section>
@@ -317,7 +329,7 @@ export default function Home() {
         <div className="footer__legal">
           <p>个人作品集；部分项目包含 AIGC 生成 / 辅助画面与合成音频。网页使用轻量代理版本，原始成片保持不变。</p>
           <p>
-            YU7 GT 为非官方个人概念作品，与小米集团无隶属或合作关系；
+            YU7 GT 为非商用、非官方个人概念作品，与小米集团无隶属或合作关系；
             Xiaomi、小米及相关产品素材与商标归各自权利人所有。
           </p>
         </div>
