@@ -1,3 +1,5 @@
+import { MotionController } from "./MotionController";
+
 const projects = [
   {
     index: "01",
@@ -9,8 +11,8 @@ const projects = [
     note: "个人概念作品 / 非官方",
     description:
       "从暗棚揭车、GT 启动与方向盘特写，到赛道追拍、海岸夜路与霓虹城市，用冷蓝黑与红色尾灯完成由静至动的性能表达。",
-    video: "/media/project-yu7.mp4",
-    poster: "/media/poster-yu7.webp",
+    video: "media/project-yu7.mp4",
+    poster: "media/poster-yu7.webp",
     accent: "acid",
   },
   {
@@ -23,8 +25,8 @@ const projects = [
     note: "完整成片",
     description:
       "医院长廊里，一束红玫瑰连接等待、误解与温柔回应。以克制的表演和干净的空间调度承载情绪。",
-    video: "/media/project-light.mp4",
-    poster: "/media/poster-light.webp",
+    video: "media/project-light.mp4",
+    poster: "media/poster-light.webp",
     accent: "blue",
   },
   {
@@ -37,8 +39,8 @@ const projects = [
     note: "展示版含原始水印",
     description:
       "以堂审、人物对峙与兵刃动作推进大殿冲突，用人物近景和群像站位持续抬高近两分钟场面的戏剧张力。",
-    video: "/media/project-upgrade.mp4",
-    poster: "/media/poster-upgrade.webp",
+    video: "media/project-upgrade.mp4",
+    poster: "media/poster-upgrade.webp",
     accent: "orange",
   },
   {
@@ -51,8 +53,8 @@ const projects = [
     note: "展示版含原始水印",
     description:
       "咖啡馆里，电话、桌号与等待交织成一次错位会面。暖色空间与克制近景，让两个人身处咫尺却始终没有真正相见。",
-    video: "/media/project-breakoff.mp4",
-    poster: "/media/poster-breakoff.webp",
+    video: "media/project-breakoff.mp4",
+    poster: "media/poster-breakoff.webp",
     accent: "rose",
   },
 ];
@@ -64,9 +66,45 @@ const capabilities = [
   ["04", "汽车影像", "产品质感、速度与声音设计"],
 ];
 
+/** 电影场记板过场：SCENE 编号 + 拍板动画，连接两个章节。 */
+function SceneSlate({ index, label }: { index: string; label: string }) {
+  return (
+    <div className="scene-slate" data-reveal="clip" aria-hidden="true">
+      <div className="scene-slate__rail" />
+      <div className="scene-slate__inner">
+        <span className="scene-slate__tag">SCENE {index}</span>
+        <div className="scene-slate__board">
+          <i />
+          <i />
+          <b>REC</b>
+        </div>
+        <span className="scene-slate__next">{label}</span>
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <>
+      <MotionController />
+
+      {/* 入场遮罩：品牌字 + 加载进度条，完成后整屏上翻揭示 hero */}
+      <div className="preloader" aria-hidden="true">
+        <span className="preloader__grid" />
+        <div className="preloader__brand">
+          <span className="preloader__line preloader__line--outline">MOTION</span>
+          <span className="preloader__line preloader__line--solid">MAKER</span>
+        </div>
+        <div className="preloader__progress"><i /></div>
+        <span className="preloader__meta preloader__meta--a">LOADING REEL · 2026</span>
+        <span className="preloader__meta preloader__meta--b">FRAME 0004 / 0004</span>
+        <span className="preloader__corner preloader__corner--tl" />
+        <span className="preloader__corner preloader__corner--tr" />
+        <span className="preloader__corner preloader__corner--bl" />
+        <span className="preloader__corner preloader__corner--br" />
+      </div>
+
       <a className="skip-link" href="#main-content">
         跳到主要内容
       </a>
@@ -78,19 +116,22 @@ export default function Home() {
         <span className="ambient__scan" />
       </div>
 
+      <div className="cursor-signal" aria-hidden="true"><span /></div>
+
       <header className="topbar">
         <a className="wordmark" href="#top" aria-label="返回网站顶部">
           <span>PORTFOLIO</span>
           <small>AI MOTION / 2026</small>
         </a>
         <nav className="nav" aria-label="主要导航">
-          <a href="#works">作品</a>
-          <a href="#scope">方向</a>
-          <a href="#profile">个人信息</a>
+          <a href="#works" data-magnetic>作品</a>
+          <a href="#scope" data-magnetic>方向</a>
+          <a href="#profile" data-magnetic>个人信息</a>
         </nav>
         <div className="signal-tag">
           <i aria-hidden="true" /> 04 FILMS / ONLINE
         </div>
+        <div className="scroll-progress" aria-hidden="true"><span /></div>
       </header>
 
       <main id="main-content">
@@ -114,8 +155,8 @@ export default function Home() {
               </p>
               <div>
                 <span>3D 漫剧 · 情感短片 · 汽车影像</span>
-                <a className="button button--primary" href="#works">
-                  浏览全部作品 <b aria-hidden="true">↘</b>
+                <a className="button button--primary" href="#works" data-magnetic>
+                  <span>浏览全部作品</span> <b aria-hidden="true">↘</b>
                 </a>
               </div>
             </div>
@@ -144,7 +185,7 @@ export default function Home() {
         </section>
 
         <section className="works section" id="works" aria-labelledby="works-title">
-          <div className="section-heading">
+          <div className="section-heading" data-reveal="up">
             <div>
               <span className="section-index">01 / SELECTED WORKS</span>
               <h2 id="works-title">四部成片，四种推进方式。</h2>
@@ -163,7 +204,7 @@ export default function Home() {
                 id={`work-${project.index}`}
                 key={project.index}
               >
-                <div className="project__header">
+                <div className="project__header" data-reveal={Number(project.index) % 2 ? "left" : "right"}>
                   <span className="project__number">{project.index}</span>
                   <div>
                     <span className="project__category">{project.category}</span>
@@ -173,7 +214,7 @@ export default function Home() {
                   <span className="project__duration">{project.duration}</span>
                 </div>
 
-                <div className="project__media">
+                <div className="project__media" data-reveal="clip">
                   <div className="monitor-bar">
                     <span><i /> MASTER / {project.index}</span>
                     <span>{project.format}</span>
@@ -196,7 +237,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="project__footer">
+                <div className="project__footer" data-reveal="up">
                   <p>{project.description}</p>
                   <dl>
                     <div><dt>TYPE</dt><dd>{project.category}</dd></div>
@@ -211,8 +252,8 @@ export default function Home() {
 
         <section className="kinetic-break" aria-label="动态视觉过场：保持向前">
           <div className="kinetic-break__stage" aria-hidden="true">
-            <span className="kinetic-break__word kinetic-break__word--top">KEEP</span>
-            <span className="kinetic-break__word kinetic-break__word--bottom">MOVING</span>
+            <span className="kinetic-break__word kinetic-break__word--top"><i>KEEP</i></span>
+            <span className="kinetic-break__word kinetic-break__word--bottom"><i>MOVING</i></span>
             <div className="signal-tunnel">
               <i /><i /><i /><i /><i /><i />
               <span>∞</span>
@@ -223,7 +264,7 @@ export default function Home() {
         </section>
 
         <section className="scope section" id="scope" aria-labelledby="scope-title">
-          <div className="scope__intro">
+          <div className="scope__intro" data-reveal="left">
             <span className="section-index">02 / CREATIVE RANGE</span>
             <h2 id="scope-title">
               同一套影像语言，
@@ -234,7 +275,7 @@ export default function Home() {
 
           <ol className="capability-grid">
             {capabilities.map(([index, title, description]) => (
-              <li key={index}>
+              <li key={index} data-reveal="scale" style={{ transitionDelay: `${Number(index) * 55}ms` }}>
                 <span>{index}</span>
                 <h3>{title}</h3>
                 <p>{description}</p>
@@ -244,8 +285,10 @@ export default function Home() {
           </ol>
         </section>
 
+        <SceneSlate index="02" label="PLATFORM RECORD" />
+
         <section className="record section" aria-labelledby="record-title">
-          <div className="record__copy">
+          <div className="record__copy" data-reveal="left">
             <span className="section-index">03 / PLATFORM RECORD</span>
             <h2 id="record-title">平台记录，保留原始证据。</h2>
             <p>
@@ -254,9 +297,9 @@ export default function Home() {
             </p>
             <span className="record__note">ORIGINAL SCREENSHOT / UNEDITED CONTENT</span>
           </div>
-          <figure className="record__image">
+          <figure className="record__image" data-reveal="right">
             <img
-              src="/media/platform-record.webp"
+              src="media/platform-record.webp"
               alt="红果平台漫剧新剧榜榜单原始截图"
               loading="lazy"
               decoding="async"
@@ -267,8 +310,10 @@ export default function Home() {
           </figure>
         </section>
 
+        <SceneSlate index="03" label="PROFILE SPACE" />
+
         <section className="profile section" id="profile" aria-labelledby="profile-title">
-          <div className="profile__portrait" aria-label="个人形象照片预留区域">
+          <div className="profile__portrait" aria-label="个人形象照片预留区域" data-reveal="scale">
             <div className="portrait-placeholder" aria-hidden="true">
               <span className="portrait-placeholder__orbit" />
               <span className="portrait-placeholder__axis" />
@@ -277,7 +322,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="profile__content">
+          <div className="profile__content" data-reveal="right">
             <span className="section-index">04 / PROFILE SPACE</span>
             <p className="profile__eyebrow">CREATOR / DIRECTOR / [ 可修改定位 ]</p>
             <h2 id="profile-title">[ 你的名字 / YOUR NAME ]</h2>
@@ -313,14 +358,14 @@ export default function Home() {
 
         <section className="closing section" aria-labelledby="closing-title">
           <div className="closing__signal" aria-hidden="true"><i /><i /><i /></div>
-          <span className="section-index">NEXT FRAME / NEXT STORY</span>
-          <h2 id="closing-title">
+          <span className="section-index" data-reveal="up">NEXT FRAME / NEXT STORY</span>
+          <h2 id="closing-title" data-reveal="left">
             下一部作品，
             <br />
             从这里开始。
           </h2>
-          <p>个人信息与合作方式补充完成后，这里将成为你的正式联系入口。</p>
-          <a className="button button--ghost" href="#top">返回顶部 <b aria-hidden="true">↑</b></a>
+          <p data-reveal="up">个人信息与合作方式补充完成后，这里将成为你的正式联系入口。</p>
+          <a className="button button--ghost" href="#top" data-magnetic data-reveal="up"><span>返回顶部</span> <b aria-hidden="true">↑</b></a>
         </section>
       </main>
 

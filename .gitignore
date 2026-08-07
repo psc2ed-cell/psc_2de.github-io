@@ -40,3 +40,5 @@ dev.stderr.log
 /.wrangler/
 /outputs/
 /work/
+dist.old/
+out/

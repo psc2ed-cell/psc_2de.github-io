@@ -1,12 +1,14 @@
 import vinext from "vinext";
 import { defineConfig } from "vite";
 import hostingConfig from "./.openai/hosting.json";
-import { sites } from "./build/sites-vite-plugin";
 
 const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
   "00000000-0000-4000-8000-000000000000";
 
 const { d1, r2 } = hostingConfig;
+
+// 纯静态导出（GitHub Pages 等）时跳过 OpenAI Sites 打包插件
+const isStaticExport = process.env.STATIC_EXPORT === "1";
 
 // macOS Seatbelt blocks FSEvents, so Codex previews need polling for HMR.
 const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === "seatbelt";
@@ -43,17 +45,30 @@ export default defineConfig(async () => {
   // Wrangler snapshots its log path while the Cloudflare plugin is imported.
   const { cloudflare } = await import("@cloudflare/vite-plugin");
 
+  const plugins: ReturnType<typeof vinext>[] = [
+    vinext(),
+    cloudflare({
+      viteEnvironment: { name: "rsc", childEnvironments: ["ssr"] },
+      config: localBindingConfig,
+    }),
+  ];
+
+  // OpenAI Sites 打包插件仅在非静态导出时启用
+  if (!isStaticExport) {
+    const { sites } = await import("./build/sites-vite-plugin");
+    plugins.splice(1, 0, sites());
+  }
+
   return {
     server: isCodexSeatbeltSandbox
       ? { watch: { useFsEvents: false, usePolling: true } }
       : undefined,
-    plugins: [
-      vinext(),
-      sites(),
-      cloudflare({
-        viteEnvironment: { name: "rsc", childEnvironments: ["ssr"] },
-        config: localBindingConfig,
-      }),
-    ],
+    // 静态导出时使用相对路径，确保在 GitHub Pages 子路径下资源可访问
+    base: isStaticExport ? "./" : undefined,
+    build: {
+      // 跳过构建前目录清理，避免触发本机文件安全保护
+      emptyOutDir: false,
+    },
+    plugins,
   };
 });
