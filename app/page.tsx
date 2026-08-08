@@ -345,6 +345,13 @@ export default function Home() {
 
             <div className="profile__contact" aria-label="联系方式区域">
               <div><span>EMAIL / 邮箱</span><strong>psc_2ed@outlook.com</strong></div>
+              <details className="phone-reveal">
+                <summary>
+                  <span>PHONE / 手机号</span>
+                  <i aria-hidden="true">点击显示</i>
+                </summary>
+                <strong>13206872352</strong>
+              </details>
             </div>
           </div>
         </section>

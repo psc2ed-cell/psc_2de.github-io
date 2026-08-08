@@ -1755,7 +1755,8 @@ video {
 }
 
 .profile__fields > div,
-.profile__contact > div {
+.profile__contact > div,
+.phone-reveal {
   padding: 18px;
   background: var(--bg-soft);
   transition: background 240ms ease, box-shadow 240ms ease, opacity 520ms ease, transform 520ms var(--ease-out);
@@ -1788,23 +1789,58 @@ video {
   background: var(--line);
 }
 
-.profile__contact > div {
+.profile__contact > div,
+.phone-reveal {
   background: #11150e;
 }
 
-/* 仅保留一个联系方式时占满整行，突出邮箱 */
-.profile__contact > div:only-child {
-  grid-column: 1 / -1;
-  background:
-    linear-gradient(90deg, rgba(199, 255, 50, 0.07), transparent 60%),
-    #11150e;
+/* 手机号隐藏入口：默认只显示标签，点击展开号码 */
+.phone-reveal {
+  position: relative;
+  margin: 0;
 }
 
-.profile__contact > div:only-child strong {
-  font-size: 0.92rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: #d6ffa0;
+.phone-reveal summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.phone-reveal summary::-webkit-details-marker {
+  display: none;
+}
+
+.phone-reveal summary span {
+  display: block;
+  color: var(--acid);
+  font: 700 0.56rem/1 "Arial Narrow", Arial, sans-serif;
+  letter-spacing: 0.16em;
+}
+
+.phone-reveal summary i {
+  display: block;
+  color: var(--muted);
+  font: 700 0.52rem/1 "Arial Narrow", Arial, sans-serif;
+  font-style: normal;
+  letter-spacing: 0.12em;
+  transition: color 200ms ease;
+}
+
+.phone-reveal[open] summary i {
+  color: var(--acid);
+}
+
+.phone-reveal strong {
+  display: block;
+  margin-top: 12px;
+  overflow-wrap: anywhere;
+  color: #d8dbd5;
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
 .profile__contact span {
@@ -1968,14 +2004,16 @@ video {
 
 .motion-enabled .project__footer dl div,
 .motion-enabled .profile__content .profile__fields > div,
-.motion-enabled .profile__content .profile__contact > div {
+.motion-enabled .profile__content .profile__contact > div,
+.motion-enabled .profile__content .phone-reveal {
   transform: translateY(13px);
   opacity: 0;
 }
 
 .motion-enabled .project__footer.is-visible dl div,
 .motion-enabled .profile__content.is-visible .profile__fields > div,
-.motion-enabled .profile__content.is-visible .profile__contact > div {
+.motion-enabled .profile__content.is-visible .profile__contact > div,
+.motion-enabled .profile__content.is-visible .phone-reveal {
   transform: translateY(0);
   opacity: 1;
 }
@@ -1987,7 +2025,7 @@ video {
 .motion-enabled .project__footer.is-visible dl div:nth-child(3),
 .motion-enabled .profile__content.is-visible .profile__fields > div:nth-child(3) { transition-delay: 250ms; }
 .motion-enabled .profile__content.is-visible .profile__contact > div:nth-child(1) { transition-delay: 310ms; }
-.motion-enabled .profile__content.is-visible .profile__contact > div:nth-child(2) { transition-delay: 430ms; }
+.motion-enabled .profile__content.is-visible .phone-reveal { transition-delay: 430ms; }
 
 .motion-enabled .record__image img {
   transform: scale(1.026);
@@ -2114,7 +2152,8 @@ video {
   .record__image:hover img { transform: scale(1.012); }
 
   .profile__fields > div:hover,
-  .profile__contact > div:hover {
+  .profile__contact > div:hover,
+  .phone-reveal:hover {
     background: #151a11;
     box-shadow: inset 2px 0 var(--acid);
   }
@@ -2395,6 +2434,7 @@ video {
   .motion-enabled .project__footer dl div,
   .motion-enabled .profile__content .profile__fields > div,
   .motion-enabled .profile__content .profile__contact > div,
+  .motion-enabled .profile__content .phone-reveal,
   .motion-enabled .record__image img,
   .motion-enabled .closing__signal i,
   .motion-enabled .kinetic-break__word,
