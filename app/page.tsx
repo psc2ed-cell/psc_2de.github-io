@@ -31,9 +31,9 @@ const projects = [
   },
   {
     index: "03",
-    title: "升级有奖",
-    english: "UPGRADE REWARDED",
-    category: "上线漫剧 · 古装玄幻",
+    title: "穿成镇北王，谁惯着退婚长公主",
+    english: "VALIANT PRINCE",
+    category: "穿越漫剧 · 古装玄幻",
     duration: "01:59",
     format: "1080P / 25 FPS",
     note: "展示版含原始水印",
@@ -45,8 +45,8 @@ const projects = [
   },
   {
     index: "04",
-    title: "退婚",
-    english: "BREAKING THE ENGAGEMENT",
+    title: "退婚后，他闪耀人生",
+    english: "AFTER THE BREAKUP",
     category: "现代情感短剧",
     duration: "00:56",
     format: "1080P / 30 FPS",
@@ -115,8 +115,6 @@ export default function Home() {
         <span className="ambient__beam ambient__beam--two" />
         <span className="ambient__scan" />
       </div>
-
-      <div className="cursor-signal" aria-hidden="true"><span /></div>
 
       <header className="topbar">
         <a className="wordmark" href="#top" aria-label="返回网站顶部">

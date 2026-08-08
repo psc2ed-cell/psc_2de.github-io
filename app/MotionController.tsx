@@ -119,21 +119,6 @@ export function MotionController() {
     window.addEventListener("scroll", updateScrollProgress, { passive: true });
     window.addEventListener("resize", updateScrollProgress);
 
-    /* ---------- 指针信号（磁吸光标） ---------- */
-    let pointerFrame = 0;
-    const updatePointer = (event: PointerEvent) => {
-      if (!finePointer.matches || reducedMotion.matches) return;
-      cancelAnimationFrame(pointerFrame);
-      pointerFrame = requestAnimationFrame(() => {
-        root.style.setProperty("--pointer-x", `${event.clientX}px`);
-        root.style.setProperty("--pointer-y", `${event.clientY}px`);
-        root.classList.add("pointer-live");
-      });
-    };
-    const hidePointer = () => root.classList.remove("pointer-live");
-    window.addEventListener("pointermove", updatePointer, { passive: true });
-    document.documentElement.addEventListener("pointerleave", hidePointer);
-
     /* ---------- 磁吸元素 ---------- */
     const magneticElements = Array.from(document.querySelectorAll<HTMLElement>("[data-magnetic]"));
     const magneticCleanups = magneticElements.map((element) => {
@@ -192,11 +177,8 @@ export function MotionController() {
       activeObserver?.disconnect();
       sectionObserver?.disconnect();
       cancelAnimationFrame(scrollFrame);
-      cancelAnimationFrame(pointerFrame);
       window.removeEventListener("scroll", updateScrollProgress);
       window.removeEventListener("resize", updateScrollProgress);
-      window.removeEventListener("pointermove", updatePointer);
-      document.documentElement.removeEventListener("pointerleave", hidePointer);
       magneticCleanups.forEach((cleanup) => cleanup());
       videoCleanups.forEach((cleanup) => cleanup());
       document.removeEventListener("visibilitychange", onVisibilityChange);
