@@ -136,7 +136,7 @@ export default function Home() {
         <section className="hero" id="top" aria-labelledby="hero-title">
           <div className="hero__meta">
             <span>AI FILM / STORY / COMMERCIAL</span>
-            <span>BASED IN 江浙沪</span>
+            <span>BASED IN 杭州</span>
           </div>
 
           <div className="hero__copy">
