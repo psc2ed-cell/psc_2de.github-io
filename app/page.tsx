@@ -3,7 +3,7 @@ import { MotionController } from "./MotionController";
 const projects = [
   {
     index: "01",
-    title: "YU7 GT",
+    title: "XAIOMI YU7 GT_TVC",
     english: "XIAOMI YU7 GT / SPEC FILM",
     category: "非商用汽车概念 TVC",
     duration: "00:40",
