@@ -343,9 +343,8 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="profile__contact" aria-label="联系方式预留区域">
+            <div className="profile__contact" aria-label="联系方式区域">
               <div><span>EMAIL / 邮箱</span><strong>psc_2ed@outlook.com</strong></div>
-              <div><span>PHONE / 手机号</span><strong>13206872352</strong></div>
             </div>
           </div>
         </section>
