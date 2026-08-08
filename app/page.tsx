@@ -290,8 +290,8 @@ export default function Home() {
             <span className="section-index">03 / PLATFORM RECORD</span>
             <h2 id="record-title">平台记录，保留原始证据。</h2>
             <p>
-              文件夹中包含一张红果“漫剧新剧榜”原始截图，但截图画面无法证明它与某一部成片的对应关系。
-              此处不擅自解读榜位、日期或数据归属；你可以在确认后补充准确说明。
+              本人参与制作的《穿成镇北王，谁惯着退婚长公主》位列红果漫剧新剧榜内。
+              此处保留原始截图作为成绩留档，幕位、数据归属与日期均以原图为准。
             </p>
             <span className="record__note">ORIGINAL SCREENSHOT / UNEDITED CONTENT</span>
           </div>
