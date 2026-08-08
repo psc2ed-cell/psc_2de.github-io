@@ -1851,6 +1851,36 @@ video {
   color: var(--muted);
 }
 
+/* 结尾正式联系入口：主 CTA + 返回顶部并排 */
+.closing__cta {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.closing__cta .button--primary {
+  min-width: 180px;
+}
+
+.closing__cta .button--ghost {
+  min-width: 140px;
+}
+
+@media (max-width: 560px) {
+  .closing__cta {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .closing__cta .button {
+    width: 100%;
+  }
+}
+
 .button--ghost {
   position: relative;
   z-index: 2;

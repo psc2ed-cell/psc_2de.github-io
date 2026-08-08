@@ -322,16 +322,18 @@ export default function Home() {
 
           <div className="profile__content" data-reveal="right">
             <span className="section-index">04 / PROFILE SPACE</span>
-            <p className="profile__eyebrow">CREATOR / DIRECTOR / [ 可修改定位 ]</p>
+            <p className="profile__eyebrow">AI 影像创作者 / DIRECTOR</p>
             <h2 id="profile-title">毛大明 / MAO DAMING</h2>
             <p className="profile__bio">
-              [ 在这里填写 80–120 字个人简介：你的创作经历、擅长题材、影像风格、工作方式与合作偏好。 ]
+              AI 影像创作者与导演，专注 AIGC 驱动的内容生产，作品覆盖 3D 国风漫剧、情感短剧与汽车概念影像。
+              从角色塑造、情绪调度到连续叙事，追求"把想象推进到下一帧"的镜头表达；
+              熟悉从创意、分镜到成片的 AI 制作全流程，期待与团队共创下一部作品。
             </p>
 
             <div className="profile__fields">
               <div>
                 <span>ROLE / 职业定位</span>
-                <strong>[ AI 影像创作者 / 导演 ]</strong>
+                <strong>AI 影像创作者 / 导演</strong>
               </div>
               <div>
                 <span>LOCATION / 期望就业城市</span>
@@ -364,8 +366,13 @@ export default function Home() {
             <br />
             从这里开始。
           </h2>
-          <p data-reveal="up">个人信息与合作方式补充完成后，这里将成为你的正式联系入口。</p>
-          <a className="button button--ghost" href="#top" data-magnetic data-reveal="up"><span>返回顶部</span> <b aria-hidden="true">↑</b></a>
+          <p data-reveal="up">从漫剧到情感短剧，从都市故事到汽车影像——让想象抵达下一帧。</p>
+          <div className="closing__cta" data-reveal="up">
+            <a className="button button--primary" href="mailto:psc_2ed@outlook.com" data-magnetic>
+              <span>联系我</span> <b aria-hidden="true">↗</b>
+            </a>
+            <a className="button button--ghost" href="#top" data-magnetic><span>返回顶部</span> <b aria-hidden="true">↑</b></a>
+          </div>
         </section>
       </main>
 
