@@ -334,15 +334,11 @@ export default function Home() {
                 <strong>[ AI 影像创作者 / 导演 ]</strong>
               </div>
               <div>
-                <span>LOCATION / 所在城市</span>
+                <span>LOCATION / 期望就业城市</span>
                 <strong>[ 待填写 ]</strong>
               </div>
               <div>
-                <span>EXPERIENCE / 从业经历</span>
-                <strong>[ 待填写 ]</strong>
-              </div>
-              <div>
-                <span>AVAILABILITY / 合作状态</span>
+                <span>EDUCATION / 学历</span>
                 <strong>[ 待填写 ]</strong>
               </div>
             </div>
