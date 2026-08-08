@@ -1555,13 +1555,13 @@ video {
   filter: brightness(0.78) contrast(1.05) saturate(0.95);
 }
 
-/* 红框高亮：在第 4 位作品《穿成镇北王》上 */
+/* 红框高亮：第 4 位《穿成镇北王》，框住剧名+简介主体，避开左侧封面与右侧"漫剧"标签 */
 .record__highlight {
   position: absolute;
-  top: 60.6%;
-  left: 2.5%;
-  right: 2.5%;
-  height: 11%;
+  top: 62.2%;
+  left: 28%;
+  right: 27.5%;
+  height: 13.5%;
   border: 3px solid #ff3838;
   border-radius: 6px;
   pointer-events: none;
