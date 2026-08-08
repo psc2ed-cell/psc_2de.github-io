@@ -323,7 +323,7 @@ export default function Home() {
           <div className="profile__content" data-reveal="right">
             <span className="section-index">04 / PROFILE SPACE</span>
             <p className="profile__eyebrow">AI 影像创作者 / DIRECTOR</p>
-            <h2 id="profile-title">毛大明 / MAO DAMING</h2>
+            <h2 id="profile-title">毛大明 / Peter</h2>
             <p className="profile__bio">
               AI 影像创作者与导演，专注 AIGC 驱动的内容生产，作品覆盖 3D 国风漫剧、情感短剧与汽车概念影像。
               从角色塑造、情绪调度到连续叙事，追求"把想象推进到下一帧"的镜头表达；
