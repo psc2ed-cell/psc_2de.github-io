@@ -339,7 +339,7 @@ export default function Home() {
               </div>
               <div>
                 <span>EDUCATION / 学历</span>
-                <strong>[ 待填写 ]</strong>
+                <strong>大专（全日制）</strong>
               </div>
             </div>
 
