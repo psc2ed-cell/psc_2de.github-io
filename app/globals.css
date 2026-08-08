@@ -1528,19 +1528,6 @@ video {
   transition: border-color 260ms ease, box-shadow 320ms ease, transform 700ms var(--ease-out), opacity 700ms ease;
 }
 
-.record__image::before {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background: linear-gradient(180deg, transparent 0%, rgba(199, 255, 50, 0.45) 50%, transparent 100%);
-  height: 70px;
-  transform: translateY(-100%);
-  content: "";
-  pointer-events: none;
-  opacity: 0;
-  mix-blend-mode: screen;
-}
-
 .record__image::after {
   position: absolute;
   top: 14px;
@@ -1552,12 +1539,8 @@ video {
   color: var(--acid);
   font: 800 0.55rem/1 "Arial Narrow", Arial, sans-serif;
   letter-spacing: 0.18em;
-  content: "LIVE / DATA FEED";
+  content: "PLATFORM RANKING";
   pointer-events: none;
-}
-
-.motion-enabled .record__image.is-visible::before {
-  animation: record-scan 4.8s linear infinite;
 }
 
 .record__image img {
@@ -1572,11 +1555,52 @@ video {
   filter: brightness(0.78) contrast(1.05) saturate(0.95);
 }
 
-@keyframes record-scan {
-  0% { transform: translateY(-100%); opacity: 0; }
-  8% { opacity: 0.9; }
-  92% { opacity: 0.9; }
-  100% { transform: translateY(calc(100vh + 100%)); opacity: 0; }
+/* 红框高亮：在第 4 位作品《穿成镇北王》上 */
+.record__highlight {
+  position: absolute;
+  top: 49.4%;
+  left: 2.5%;
+  right: 2.5%;
+  height: 12%;
+  border: 3px solid #ff3838;
+  border-radius: 6px;
+  pointer-events: none;
+  z-index: 4;
+  box-shadow:
+    0 0 0 4px rgba(255, 56, 56, 0.18),
+    0 0 24px rgba(255, 56, 56, 0.55);
+  animation: highlight-pulse 2.4s ease-in-out infinite;
+}
+
+.record__highlight::before {
+  position: absolute;
+  top: -32px;
+  right: 0;
+  padding: 5px 12px;
+  background: #ff3838;
+  color: #fff;
+  font: 800 0.62rem/1 "Arial Narrow", Arial, sans-serif;
+  letter-spacing: 0.18em;
+  content: "我参与制作的剧";
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(255, 56, 56, 0.4);
+}
+
+.record__highlight::after {
+  position: absolute;
+  top: 100%;
+  right: 16px;
+  width: 0;
+  height: 0;
+  margin-top: 4px;
+  border: 6px solid transparent;
+  border-top-color: #ff3838;
+  content: "";
+}
+
+@keyframes highlight-pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(255, 56, 56, 0.18), 0 0 24px rgba(255, 56, 56, 0.55); }
+  50% { box-shadow: 0 0 0 6px rgba(255, 56, 56, 0.28), 0 0 36px rgba(255, 56, 56, 0.85); }
 }
 
 .record__image figcaption {
