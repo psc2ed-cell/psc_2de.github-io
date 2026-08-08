@@ -1555,54 +1555,6 @@ video {
   filter: brightness(0.78) contrast(1.05) saturate(0.95);
 }
 
-/* 红框高亮：第 4 位《穿成镇北王》，框住剧名+简介主体，避开左侧封面与右侧"漫剧"标签 */
-.record__highlight {
-  position: absolute;
-  top: 62.2%;
-  left: 28%;
-  right: 27.5%;
-  height: 13.5%;
-  border: 3px solid #ff3838;
-  border-radius: 6px;
-  pointer-events: none;
-  z-index: 4;
-  box-shadow:
-    0 0 0 4px rgba(255, 56, 56, 0.18),
-    0 0 24px rgba(255, 56, 56, 0.55);
-  animation: highlight-pulse 2.4s ease-in-out infinite;
-}
-
-.record__highlight::before {
-  position: absolute;
-  top: -32px;
-  right: 0;
-  padding: 5px 12px;
-  background: #ff3838;
-  color: #fff;
-  font: 800 0.62rem/1 "Arial Narrow", Arial, sans-serif;
-  letter-spacing: 0.18em;
-  content: "我参与制作的剧";
-  border-radius: 4px;
-  box-shadow: 0 4px 12px rgba(255, 56, 56, 0.4);
-}
-
-.record__highlight::after {
-  position: absolute;
-  top: 100%;
-  right: 16px;
-  width: 0;
-  height: 0;
-  margin-top: 4px;
-  border: 6px solid transparent;
-  border-top-color: #ff3838;
-  content: "";
-}
-
-@keyframes highlight-pulse {
-  0%, 100% { box-shadow: 0 0 0 4px rgba(255, 56, 56, 0.18), 0 0 24px rgba(255, 56, 56, 0.55); }
-  50% { box-shadow: 0 0 0 6px rgba(255, 56, 56, 0.28), 0 0 36px rgba(255, 56, 56, 0.85); }
-}
-
 .record__image figcaption {
   padding: 14px 16px;
   border-top: 1px solid var(--line);
@@ -1818,10 +1770,11 @@ video {
   background: #11150e;
 }
 
-/* 手机号隐藏入口：默认只显示标签，点击展开号码 */
+/* 手机号隐藏入口：整个框可点击展开号码 */
 .phone-reveal {
   position: relative;
   margin: 0;
+  padding: 0;
 }
 
 .phone-reveal summary {
@@ -1829,6 +1782,7 @@ video {
   align-items: center;
   justify-content: space-between;
   gap: 10px;
+  padding: 18px;
   list-style: none;
   cursor: pointer;
   user-select: none;
@@ -1860,7 +1814,8 @@ video {
 
 .phone-reveal strong {
   display: block;
-  margin-top: 12px;
+  margin-top: 0;
+  padding: 0 18px 18px;
   overflow-wrap: anywhere;
   color: #d8dbd5;
   font-size: 0.8rem;

@@ -304,7 +304,6 @@ export default function Home() {
               width="900"
               height="2000"
             />
-            <div className="record__highlight" aria-label="我参与制作的剧：穿成镇北王，谁惯着退婚长公主" />
             <figcaption>平台榜单成绩截图 · 项目对应关系与数据口径待本人确认</figcaption>
           </figure>
         </section>
