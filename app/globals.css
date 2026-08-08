@@ -1558,10 +1558,10 @@ video {
 /* 红框高亮：在第 4 位作品《穿成镇北王》上 */
 .record__highlight {
   position: absolute;
-  top: 49.4%;
+  top: 60.6%;
   left: 2.5%;
   right: 2.5%;
-  height: 12%;
+  height: 11%;
   border: 3px solid #ff3838;
   border-radius: 6px;
   pointer-events: none;
