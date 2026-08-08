@@ -136,7 +136,7 @@ export default function Home() {
         <section className="hero" id="top" aria-labelledby="hero-title">
           <div className="hero__meta">
             <span>AI FILM / STORY / COMMERCIAL</span>
-            <span>BASED IN [ 填写城市 ]</span>
+            <span>BASED IN 江浙沪</span>
           </div>
 
           <div className="hero__copy">
@@ -323,7 +323,7 @@ export default function Home() {
           <div className="profile__content" data-reveal="right">
             <span className="section-index">04 / PROFILE SPACE</span>
             <p className="profile__eyebrow">CREATOR / DIRECTOR / [ 可修改定位 ]</p>
-            <h2 id="profile-title">[ 你的名字 / YOUR NAME ]</h2>
+            <h2 id="profile-title">毛大明 / MAO DAMING</h2>
             <p className="profile__bio">
               [ 在这里填写 80–120 字个人简介：你的创作经历、擅长题材、影像风格、工作方式与合作偏好。 ]
             </p>
@@ -335,7 +335,7 @@ export default function Home() {
               </div>
               <div>
                 <span>LOCATION / 期望就业城市</span>
-                <strong>[ 待填写 ]</strong>
+                <strong>江浙沪</strong>
               </div>
               <div>
                 <span>EDUCATION / 学历</span>
@@ -344,8 +344,8 @@ export default function Home() {
             </div>
 
             <div className="profile__contact" aria-label="联系方式预留区域">
-              <div><span>EMAIL / 邮箱</span><strong>[ 你的邮箱 ]</strong></div>
-              <div><span>PHONE / 手机号</span><strong>[ 你的手机号 ]</strong></div>
+              <div><span>EMAIL / 邮箱</span><strong>psc_2ed@outlook.com</strong></div>
+              <div><span>PHONE / 手机号</span><strong>13206872352</strong></div>
             </div>
           </div>
         </section>
@@ -372,7 +372,7 @@ export default function Home() {
             Xiaomi、小米及相关产品素材与商标归各自权利人所有。
           </p>
         </div>
-        <span>© 2026 [ 你的名字 ]</span>
+        <span>© 2026 毛大明</span>
       </footer>
     </>
   );
