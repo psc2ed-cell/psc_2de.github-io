@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": ">=22.13.0"
+    "node": ">=22.13.0 <24"
   },
   "scripts": {
     "dev": "vinext dev",
     "build": "vinext build",
-    "build:static": "STATIC_EXPORT=1 vinext build",
+    "build:static": "node scripts/build-static.mjs",
     "start": "vinext start",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "db:generate": "drizzle-kit generate"

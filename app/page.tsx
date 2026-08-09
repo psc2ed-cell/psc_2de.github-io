@@ -3,7 +3,7 @@ import { MotionController } from "./MotionController";
 const projects = [
   {
     index: "01",
-    title: "XAIOMI YU7 GT_TVC",
+    title: "XIAOMI YU7 GT / SPEC FILM",
     english: "XIAOMI YU7 GT / SPEC FILM",
     category: "非商用汽车概念 TVC",
     duration: "00:40",
@@ -33,7 +33,7 @@ const projects = [
     index: "03",
     title: "穿成镇北王，谁惯着退婚长公主",
     english: "VALIANT PRINCE",
-    category: "穿越漫剧 · 古装玄幻",
+    category: "上线漫剧 · 古装玄幻",
     duration: "01:59",
     format: "1080P / 25 FPS",
     note: "展示版含原始水印",
@@ -122,9 +122,9 @@ export default function Home() {
           <small>AI MOTION / 2026</small>
         </a>
         <nav className="nav" aria-label="主要导航">
-          <a href="#works" data-magnetic>作品</a>
-          <a href="#scope" data-magnetic>方向</a>
-          <a href="#profile" data-magnetic>个人信息</a>
+          <a href="#works">作品</a>
+          <a href="#scope">方向</a>
+          <a href="#profile">个人信息</a>
         </nav>
         <div className="signal-tag">
           <i aria-hidden="true" /> 04 FILMS / ONLINE
@@ -189,9 +189,9 @@ export default function Home() {
               <h2 id="works-title">四部成片，四种推进方式。</h2>
             </div>
             <p>
-              所有作品画面只存在于独立播放器中。
+              从完整成片出发，呈现不同题材中的叙事、表演与节奏控制。
               <br />
-              网站背景不使用任何成片帧。
+              点击播放器，即可观看轻量展示版。
             </p>
           </div>
 
@@ -218,6 +218,8 @@ export default function Home() {
                     <span>{project.format}</span>
                   </div>
                   <div className="monitor-screen">
+                    {/* Showcase masters contain their original baked presentation; separate caption tracks were not supplied. */}
+                    {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
                     <video
                       controls
                       playsInline
@@ -283,17 +285,17 @@ export default function Home() {
           </ol>
         </section>
 
-        <SceneSlate index="02" label="PLATFORM RECORD" />
+        <SceneSlate index="03" label="PLATFORM RECORD" />
 
         <section className="record section" aria-labelledby="record-title">
           <div className="record__copy" data-reveal="left">
             <span className="section-index">03 / PLATFORM RECORD</span>
             <h2 id="record-title">平台记录，保留原始证据。</h2>
             <p>
-              本人参与制作的《穿成镇北王，谁惯着退婚长公主》位列红果漫剧新剧榜内。
-              此处保留原始截图作为成绩留档，幕位、数据归属与日期均以原图为准。
+              本人参与制作的《穿成镇北王，谁惯着退婚长公主》于截图记录时位列红果漫剧新剧榜第 4 位，
+              榜单热度 4644 万。此处保留原始截图作为项目成绩留档，榜单名称、名次与数据均以截图为准。
             </p>
-            <span className="record__note">ORIGINAL SCREENSHOT / UNEDITED CONTENT</span>
+            <span className="record__note">RANK 04 / ORIGINAL SCREENSHOT</span>
           </div>
           <figure className="record__image" data-reveal="right">
             <img
@@ -304,19 +306,27 @@ export default function Home() {
               width="900"
               height="2000"
             />
-            <figcaption>平台榜单成绩截图 · 项目对应关系与数据口径待本人确认</figcaption>
+            <figcaption>红果漫剧新剧榜 · 第 4 位 · 截图时点热度 4644 万</figcaption>
           </figure>
         </section>
 
-        <SceneSlate index="03" label="PROFILE SPACE" />
+        <SceneSlate index="04" label="PROFILE SPACE" />
 
         <section className="profile section" id="profile" aria-labelledby="profile-title">
-          <div className="profile__portrait" aria-label="个人形象照片预留区域" data-reveal="scale">
-            <div className="portrait-placeholder" aria-hidden="true">
-              <span className="portrait-placeholder__orbit" />
-              <span className="portrait-placeholder__axis" />
-              <strong>PORTRAIT</strong>
-              <small>个人形象图预留 / 1:1</small>
+          <div
+            className="profile__portrait"
+            aria-label="Peter Mao 的 AI 影像创作者个人标识"
+            role="img"
+            data-reveal="scale"
+          >
+            <div className="profile-card" aria-hidden="true">
+              <span className="profile-card__meta">CREATIVE PROFILE / 2026</span>
+              <strong className="profile-card__monogram"><i>P</i><em>/</em><i>M</i></strong>
+              <div className="profile-card__identity">
+                <b>PETER MAO</b>
+                <small>AI FILM CREATOR / DIRECTOR</small>
+              </div>
+              <span className="profile-card__count">SELECTED WORKS / 04</span>
             </div>
           </div>
 
@@ -326,7 +336,7 @@ export default function Home() {
             <h2 id="profile-title">毛大明 / Peter</h2>
             <p className="profile__bio">
               AI 影像创作者与导演，专注 AIGC 驱动的内容生产，作品覆盖 3D 国风漫剧、情感短剧与汽车概念影像。
-              从角色塑造、情绪调度到连续叙事，追求"把想象推进到下一帧"的镜头表达；
+              从角色塑造、情绪调度到连续叙事，追求“把想象推进到下一帧”的镜头表达；
               熟悉从创意、分镜到成片的 AI 制作全流程，期待与团队共创下一部作品。
             </p>
 
@@ -336,23 +346,24 @@ export default function Home() {
                 <strong>AI 影像创作者 / 导演</strong>
               </div>
               <div>
-                <span>LOCATION / 期望就业城市</span>
-                <strong>江浙沪</strong>
-              </div>
-              <div>
                 <span>EDUCATION / 学历</span>
                 <strong>大专（全日制）</strong>
               </div>
             </div>
 
             <div className="profile__contact" aria-label="联系方式区域">
-              <div><span>EMAIL / 邮箱</span><strong>psc_2ed@outlook.com</strong></div>
+              <a href="mailto:psc_2ed@outlook.com" aria-label="发送邮件至 psc_2ed@outlook.com">
+                <span>EMAIL / 邮箱</span>
+                <strong>psc_2ed@outlook.com</strong>
+              </a>
               <details className="phone-reveal">
                 <summary>
                   <span>PHONE / 手机号</span>
-                  <i aria-hidden="true">点击显示</i>
+                  <i aria-hidden="true" />
                 </summary>
-                <strong>13206872352</strong>
+                <a className="phone-reveal__number" href="tel:13206872352" aria-label="拨打 13206872352">
+                  13206872352
+                </a>
               </details>
             </div>
           </div>

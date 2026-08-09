@@ -18,7 +18,8 @@ export function MotionController() {
     /* ---------- Preloader：入场遮罩 ---------- */
     const preloader = document.querySelector<HTMLElement>(".preloader");
     let preloaderTimer: ReturnType<typeof setTimeout> | undefined;
-    const REEL_DURATION = 1750; // 与 CSS --reel-duration 保持一致
+    let preloaderFallbackTimer: ReturnType<typeof setTimeout> | undefined;
+    const REEL_DURATION = 1320; // 与 CSS --reel-duration 保持一致
     let reelSeen = false;
     try {
       reelSeen = sessionStorage.getItem("motion-maker-reel") === "1";
@@ -28,6 +29,7 @@ export function MotionController() {
 
     const finishPreloader = () => {
       clearTimeout(preloaderTimer);
+      clearTimeout(preloaderFallbackTimer);
       root.classList.add("is-loaded");
       // 记录已完成过场，刷新不再重播
       try {
@@ -46,7 +48,7 @@ export function MotionController() {
         // 首次访问：播放进度条，结束后上翻揭示页面
         preloaderTimer = setTimeout(finishPreloader, REEL_DURATION);
         // 兜底：即使定时器异常也要保证页面可用
-        window.setTimeout(finishPreloader, REEL_DURATION + 2500);
+        preloaderFallbackTimer = window.setTimeout(finishPreloader, REEL_DURATION + 2200);
       }
     } else {
       root.classList.add("is-loaded");
@@ -144,14 +146,26 @@ export function MotionController() {
 
     /* ---------- 视频播放状态 ---------- */
     const videos = Array.from(document.querySelectorAll<HTMLVideoElement>(".project__media video"));
+    const syncVideoState = () => {
+      root.classList.toggle("video-playing", videos.some((video) => !video.paused && !video.ended));
+    };
     const videoCleanups = videos.map((video) => {
       const frame = video.closest<HTMLElement>(".project__media");
       const setState = (state: "ready" | "playing" | "paused") => {
         if (frame) frame.dataset.playback = state;
       };
-      const onPlay = () => setState("playing");
-      const onPause = () => setState(video.ended ? "ready" : "paused");
-      const onEnded = () => setState("ready");
+      const onPlay = () => {
+        setState("playing");
+        syncVideoState();
+      };
+      const onPause = () => {
+        setState(video.ended ? "ready" : "paused");
+        syncVideoState();
+      };
+      const onEnded = () => {
+        setState("ready");
+        syncVideoState();
+      };
       setState("ready");
       video.addEventListener("play", onPlay);
       video.addEventListener("pause", onPause);
@@ -173,6 +187,7 @@ export function MotionController() {
 
     return () => {
       clearTimeout(preloaderTimer);
+      clearTimeout(preloaderFallbackTimer);
       observer?.disconnect();
       activeObserver?.disconnect();
       sectionObserver?.disconnect();
@@ -183,7 +198,7 @@ export function MotionController() {
       videoCleanups.forEach((cleanup) => cleanup());
       document.removeEventListener("visibilitychange", onVisibilityChange);
       document.querySelectorAll(".nav a[aria-current]").forEach((link) => link.removeAttribute("aria-current"));
-      root.classList.remove("motion-enabled", "pointer-live", "is-page-hidden");
+      root.classList.remove("motion-enabled", "pointer-live", "is-page-hidden", "video-playing");
     };
   }, []);
 
