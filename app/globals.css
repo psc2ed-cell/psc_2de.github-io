@@ -442,8 +442,90 @@ video {
   animation: signal-pulse 1.8s ease-in-out infinite;
 }
 
+/* 光学流体膜：只在首屏与结尾出现，保持播放器区域干净。 */
+.hero::before,
+.hero::after,
+.closing::before,
+.closing::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+  will-change: auto;
+}
+
+.hero::before,
+.closing::before {
+  border-radius: 44% 56% 63% 37% / 58% 38% 62% 42%;
+  background:
+    radial-gradient(ellipse at 31% 34%, rgba(199, 255, 50, 0.42) 0%, rgba(199, 255, 50, 0.14) 24%, transparent 53%),
+    radial-gradient(ellipse at 74% 68%, rgba(116, 167, 255, 0.25) 0%, rgba(116, 167, 255, 0.08) 25%, transparent 50%),
+    radial-gradient(ellipse at 48% 44%, rgba(241, 243, 237, 0.08) 0%, transparent 17%),
+    conic-gradient(from 118deg at 51% 52%, transparent 0 15%, rgba(199, 255, 50, 0.18) 22%, transparent 33% 61%, rgba(116, 167, 255, 0.16) 70%, transparent 81%);
+  filter: blur(18px) saturate(120%);
+  animation: fluid-film-drift 19s ease-in-out infinite alternate;
+}
+
+.hero::after,
+.closing::after {
+  border-radius: 52% 48% 38% 62% / 43% 62% 38% 57%;
+  background:
+    repeating-radial-gradient(ellipse at 47% 49%, transparent 0 17px, rgba(199, 255, 50, 0.11) 18px, transparent 20px 34px),
+    repeating-radial-gradient(ellipse at 63% 53%, transparent 0 29px, rgba(116, 167, 255, 0.075) 30px, transparent 32px 48px);
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 0 30%, rgba(0, 0, 0, 0.86) 58%, transparent 83%);
+  mask-image: radial-gradient(ellipse at center, #000 0 30%, rgba(0, 0, 0, 0.86) 58%, transparent 83%);
+  filter: blur(0.4px) drop-shadow(0 0 22px rgba(199, 255, 50, 0.12));
+  animation: fluid-caustic-drift 27s ease-in-out infinite alternate;
+}
+
+.hero::before {
+  top: 1%;
+  right: -12%;
+  z-index: 1;
+  width: min(78vw, 1180px);
+  aspect-ratio: 1.18;
+  opacity: 0.24;
+}
+
+.hero::after {
+  top: 4%;
+  right: -4%;
+  z-index: 1;
+  width: min(68vw, 1040px);
+  aspect-ratio: 1;
+  opacity: 0.13;
+  animation-delay: -9s;
+}
+
+.closing::before {
+  right: -17%;
+  bottom: -38%;
+  z-index: 0;
+  width: min(86vw, 1180px);
+  aspect-ratio: 1.1;
+  opacity: 0.2;
+  animation-delay: -7s;
+}
+
+.closing::after {
+  top: -20%;
+  right: 0;
+  z-index: 0;
+  width: min(72vw, 980px);
+  aspect-ratio: 1;
+  opacity: 0.1;
+  animation-delay: -15s;
+}
+
+.hero::before,
+.hero::after,
+.closing::before,
+.closing::after {
+  animation-play-state: paused;
+}
+
 .hero {
   position: relative;
+  isolation: isolate;
   display: flex;
   min-height: 100svh;
   align-items: center;
@@ -1819,6 +1901,7 @@ video {
 
 .closing {
   position: relative;
+  isolation: isolate;
   min-height: 78svh;
   display: flex;
   flex-direction: column;
@@ -1826,6 +1909,11 @@ video {
   justify-content: center;
   overflow: hidden;
   border-top: 1px solid var(--line);
+}
+
+.closing > .section-index {
+  position: relative;
+  z-index: 2;
 }
 
 .closing h2 {
@@ -1888,6 +1976,7 @@ video {
   position: absolute;
   right: -10%;
   bottom: -32%;
+  z-index: 1;
   width: 70vw;
   aspect-ratio: 1;
 }
@@ -2061,6 +2150,14 @@ video {
 .kinetic-break.is-active::before,
 .kinetic-break.is-active::after {
   animation-play-state: running;
+}
+
+.hero.is-active::before,
+.hero.is-active::after,
+.closing.is-active::before,
+.closing.is-active::after {
+  animation-play-state: running;
+  will-change: transform;
 }
 
 .motion-enabled .closing__signal i {
@@ -2240,6 +2337,18 @@ video {
   to { transform: translateX(-50%); }
 }
 
+@keyframes fluid-film-drift {
+  0% { transform: translate3d(-4%, 2%, 0) rotate(-8deg) scale(0.96); }
+  48% { transform: translate3d(3%, -3%, 0) rotate(4deg) scale(1.06); }
+  100% { transform: translate3d(7%, 4%, 0) rotate(10deg) scale(1.01); }
+}
+
+@keyframes fluid-caustic-drift {
+  0% { transform: translate3d(2%, -2%, 0) rotate(-11deg) scale(0.98); }
+  52% { transform: translate3d(-4%, 3%, 0) rotate(3deg) scale(1.08); }
+  100% { transform: translate3d(5%, -1%, 0) rotate(12deg) scale(1.03); }
+}
+
 @keyframes kinetic-word-left {
   from { transform: translateX(-3vw); }
   to { transform: translateX(12vw); }
@@ -2337,6 +2446,17 @@ video {
     margin-left: 0;
   }
   .motion-engine { --engine-opacity: 0.34; right: -47vw; width: 95vw; opacity: var(--engine-opacity); }
+  .hero::before,
+  .closing::before {
+    width: 118vw;
+    filter: blur(20px) saturate(116%);
+    animation: none;
+    will-change: auto;
+  }
+  .hero::before { top: 17%; right: -45%; opacity: 0.18; }
+  .closing::before { right: -48%; bottom: -15%; opacity: 0.16; }
+  .hero::after,
+  .closing::after { display: none; }
   .section { width: min(90vw, 720px); }
   .section-heading { align-items: flex-start; flex-direction: column; gap: 22px; }
   .section-heading > p { max-width: 100%; text-align: left; }
@@ -2380,6 +2500,12 @@ video {
   .hero {
     min-height: 100svh;
     padding: 104px 18px 88px;
+  }
+  .hero::before,
+  .closing::before {
+    animation: none;
+    opacity: 0.13;
+    filter: blur(18px) saturate(112%);
   }
   .hero__meta { top: 82px; right: 18px; left: 18px; }
   .hero__kicker { font-size: 0.59rem; letter-spacing: 0.14em; }
@@ -2433,6 +2559,16 @@ video {
   }
 
   .preloader { display: none !important; }
+
+  .hero::before,
+  .hero::after,
+  .closing::before,
+  .closing::after {
+    animation: none !important;
+    transform: none !important;
+    opacity: 0.12;
+    will-change: auto;
+  }
 
   .motion-enabled [data-reveal],
   .motion-enabled .project__header .project__number,
