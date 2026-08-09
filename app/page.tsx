@@ -240,6 +240,7 @@ export default function Home() {
                     {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
                     <video
                       controls
+                      controlsList="nodownload"
                       playsInline
                       preload="none"
                       poster={project.poster}

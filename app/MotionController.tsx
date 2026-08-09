@@ -166,14 +166,19 @@ export function MotionController() {
         setState("ready");
         syncVideoState();
       };
+      const onContextMenu = (event: MouseEvent) => {
+        event.preventDefault();
+      };
       setState("ready");
       video.addEventListener("play", onPlay);
       video.addEventListener("pause", onPause);
       video.addEventListener("ended", onEnded);
+      video.addEventListener("contextmenu", onContextMenu);
       return () => {
         video.removeEventListener("play", onPlay);
         video.removeEventListener("pause", onPause);
         video.removeEventListener("ended", onEnded);
+        video.removeEventListener("contextmenu", onContextMenu);
         if (frame) delete frame.dataset.playback;
       };
     });
