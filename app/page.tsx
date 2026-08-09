@@ -66,19 +66,37 @@ const capabilities = [
   ["04", "汽车影像", "产品质感、速度与声音设计"],
 ];
 
-/** 电影场记板过场：SCENE 编号 + 拍板动画，连接两个章节。 */
-function SceneSlate({ index, label }: { index: string; label: string }) {
+/** 剪辑时间线章节提示：用监看台语言衔接后半段内容。 */
+function SequenceCue({ index, label, detail }: { index: string; label: string; detail: string }) {
   return (
-    <div className="scene-slate" data-reveal="clip" aria-hidden="true">
-      <div className="scene-slate__rail" />
-      <div className="scene-slate__inner">
-        <span className="scene-slate__tag">SCENE {index}</span>
-        <div className="scene-slate__board">
-          <i />
-          <i />
-          <b>REC</b>
+    <div className="sequence-cue" data-scene={index} data-reveal="clip" aria-hidden="true">
+      <div className="sequence-cue__inner">
+        <div className="sequence-cue__number">
+          <span>NEXT / SEQUENCE</span>
+          <strong>{index}</strong>
+          <small>CHAPTER {index} / 04</small>
         </div>
-        <span className="scene-slate__next">{label}</span>
+
+        <div className="sequence-cue__console">
+          <div className="sequence-cue__status">
+            <span><i /> SEQ {index} READY</span>
+            <span>MASTER TIMELINE / 2026</span>
+          </div>
+
+          <strong className="sequence-cue__title">{label}</strong>
+          <span className="sequence-cue__detail">{detail}</span>
+
+          <div className="sequence-cue__timeline">
+            <div className="sequence-cue__track">
+              <i /><i /><i /><i />
+              <b />
+            </div>
+            <div className="sequence-cue__markers">
+              <span>01</span><span>02</span><span>03</span><span>04</span>
+            </div>
+            <span className="sequence-cue__timecode">TC 00:{index}:00:00</span>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -285,7 +303,11 @@ export default function Home() {
           </ol>
         </section>
 
-        <SceneSlate index="03" label="PLATFORM RECORD" />
+        <SequenceCue
+          index="03"
+          label="PLATFORM RECORD"
+          detail="ARCHIVE / ORIGINAL PLATFORM CAPTURE"
+        />
 
         <section className="record section" aria-labelledby="record-title">
           <div className="record__copy" data-reveal="left">
@@ -310,7 +332,11 @@ export default function Home() {
           </figure>
         </section>
 
-        <SceneSlate index="04" label="PROFILE SPACE" />
+        <SequenceCue
+          index="04"
+          label="PROFILE SPACE"
+          detail="CREATOR / CONTACT / AVAILABILITY"
+        />
 
         <section className="profile section" id="profile" aria-labelledby="profile-title">
           <div

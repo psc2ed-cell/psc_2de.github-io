@@ -10,7 +10,7 @@ export function MotionController() {
     const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
     const reveals = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
     const activeSurfaces = Array.from(
-      document.querySelectorAll<HTMLElement>(".hero, .project, .kinetic-break, .profile, .closing, .scene-slate"),
+      document.querySelectorAll<HTMLElement>(".hero, .project, .kinetic-break, .profile, .closing, .sequence-cue"),
     );
 
     root.classList.add("motion-enabled");
