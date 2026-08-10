@@ -3,34 +3,6 @@ import { MotionController } from "./MotionController";
 const projects = [
   {
     index: "01",
-    title: "XIAOMI YU7 GT / SPEC FILM",
-    english: "XIAOMI YU7 GT / SPEC FILM",
-    category: "非商用汽车概念 TVC",
-    duration: "00:40",
-    format: "1080P / 24 FPS",
-    note: "个人概念作品 / 非官方",
-    description:
-      "从暗棚揭车、GT 启动与方向盘特写，到赛道追拍、海岸夜路与霓虹城市，用冷蓝黑与红色尾灯完成由静至动的性能表达。",
-    video: "media/project-yu7.mp4",
-    poster: "media/poster-yu7.webp",
-    accent: "acid",
-  },
-  {
-    index: "02",
-    title: "等一束光",
-    english: "WAITING FOR A LIGHT",
-    category: "情感剧情短片",
-    duration: "00:54",
-    format: "1080P / 30 FPS",
-    note: "完整成片",
-    description:
-      "医院长廊里，一束红玫瑰连接等待、误解与温柔回应。以克制的表演和干净的空间调度承载情绪。",
-    video: "media/project-light.mp4",
-    poster: "media/poster-light.webp",
-    accent: "blue",
-  },
-  {
-    index: "03",
     title: "穿成镇北王，谁惯着退婚长公主",
     english: "VALIANT PRINCE",
     category: "上线漫剧 · 古装玄幻",
@@ -44,7 +16,21 @@ const projects = [
     accent: "orange",
   },
   {
-    index: "04",
+    index: "02",
+    title: "XIAOMI YU7 GT / SPEC FILM",
+    english: "XIAOMI YU7 GT / SPEC FILM",
+    category: "非商用汽车概念 TVC",
+    duration: "00:40",
+    format: "1080P / 24 FPS",
+    note: "个人概念作品 / 非官方",
+    description:
+      "从暗棚揭车、GT 启动与方向盘特写，到赛道追拍、海岸夜路与霓虹城市，用冷蓝黑与红色尾灯完成由静至动的性能表达。",
+    video: "media/project-yu7.mp4",
+    poster: "media/poster-yu7.webp",
+    accent: "acid",
+  },
+  {
+    index: "03",
     title: "退婚后，他闪耀人生",
     english: "AFTER THE BREAKUP",
     category: "现代情感短剧",
@@ -56,6 +42,20 @@ const projects = [
     video: "media/project-breakoff.mp4",
     poster: "media/poster-breakoff.webp",
     accent: "rose",
+  },
+  {
+    index: "04",
+    title: "等一束光",
+    english: "WAITING FOR A LIGHT",
+    category: "情感剧情短片",
+    duration: "00:54",
+    format: "1080P / 30 FPS",
+    note: "完整成片",
+    description:
+      "医院长廊里，一束红玫瑰连接等待、误解与温柔回应。以克制的表演和干净的空间调度承载情绪。",
+    video: "media/project-light.mp4",
+    poster: "media/poster-light.webp",
+    accent: "blue",
   },
 ];
 

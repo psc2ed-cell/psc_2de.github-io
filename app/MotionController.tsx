@@ -17,9 +17,13 @@ export function MotionController() {
 
     /* ---------- Preloader：入场遮罩 ---------- */
     const preloader = document.querySelector<HTMLElement>(".preloader");
+    preloader?.style.removeProperty("display");
     let preloaderTimer: ReturnType<typeof setTimeout> | undefined;
     let preloaderFallbackTimer: ReturnType<typeof setTimeout> | undefined;
     const REEL_DURATION = 1320; // 与 CSS --reel-duration 保持一致
+    const navigationEntry = performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming | undefined;
+    const legacyPerformance = performance as Performance & { navigation?: { type: number } };
+    const isReload = navigationEntry?.type === "reload" || legacyPerformance.navigation?.type === 1;
     let reelSeen = false;
     try {
       reelSeen = sessionStorage.getItem("motion-maker-reel") === "1";
@@ -31,7 +35,6 @@ export function MotionController() {
       clearTimeout(preloaderTimer);
       clearTimeout(preloaderFallbackTimer);
       root.classList.add("is-loaded");
-      // 记录已完成过场，刷新不再重播
       try {
         sessionStorage.setItem("motion-maker-reel", "1");
       } catch {
@@ -40,12 +43,12 @@ export function MotionController() {
     };
 
     if (preloader) {
-      if (reducedMotion.matches || reelSeen) {
-        // 减少动态偏好 / 刷新回访：立即完成，不播动画
+      if (reducedMotion.matches || (reelSeen && !isReload)) {
+        // 减少动态偏好 / 非刷新回访：立即完成，不播动画
         preloader.style.display = "none";
         finishPreloader();
       } else {
-        // 首次访问：播放进度条，结束后上翻揭示页面
+        // 首次访问或刷新：播放进度条，结束后上翻揭示页面
         preloaderTimer = setTimeout(finishPreloader, REEL_DURATION);
         // 兜底：即使定时器异常也要保证页面可用
         preloaderFallbackTimer = window.setTimeout(finishPreloader, REEL_DURATION + 2200);
