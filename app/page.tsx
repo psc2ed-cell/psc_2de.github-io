@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { MotionController } from "./MotionController";
 
 const projects = [
@@ -66,15 +67,41 @@ const capabilities = [
   ["04", "汽车影像", "产品质感、速度与声音设计"],
 ];
 
-/** 剪辑时间线章节提示：用监看台语言衔接后半段内容。 */
-function SequenceCue({ index, label, detail }: { index: string; label: string; detail: string }) {
+/** 剪辑时间线章节提示：用监看台语言衔接章节，并同步显示真实进度。 */
+function SequenceCue({
+  index,
+  label,
+  detail,
+  total = "06",
+  compact = false,
+}: {
+  index: string;
+  label: string;
+  detail: string;
+  total?: string;
+  compact?: boolean;
+}) {
+  const currentStep = Number.parseInt(index, 10);
+  const totalSteps = Number.parseInt(total, 10);
+  const safeTotal = Number.isFinite(totalSteps) && totalSteps > 0 ? totalSteps : 1;
+  const safeCurrent = Number.isFinite(currentStep) ? Math.min(Math.max(currentStep, 1), safeTotal) : 1;
+  const progress = safeTotal > 1 ? ((safeCurrent - 1) / (safeTotal - 1)) * 100 : 100;
+  const markers = Array.from({ length: safeTotal }, (_, markerIndex) => markerIndex + 1);
+  const cueStyle = { "--cue-progress": `${progress}%` } as CSSProperties;
+
   return (
-    <div className="sequence-cue" data-scene={index} data-reveal="clip" aria-hidden="true">
+    <div
+      className={`sequence-cue${compact ? " sequence-cue--compact" : ""}`}
+      data-scene={index}
+      data-reveal="clip"
+      style={cueStyle}
+      aria-hidden="true"
+    >
       <div className="sequence-cue__inner">
         <div className="sequence-cue__number">
           <span>NEXT / SEQUENCE</span>
           <strong>{index}</strong>
-          <small>CHAPTER {index} / 04</small>
+          <small>CHAPTER {index} / {String(safeTotal).padStart(2, "0")}</small>
         </div>
 
         <div className="sequence-cue__console">
@@ -88,11 +115,15 @@ function SequenceCue({ index, label, detail }: { index: string; label: string; d
 
           <div className="sequence-cue__timeline">
             <div className="sequence-cue__track">
-              <i /><i /><i /><i />
+              {markers.map((marker) => (
+                <i className={marker <= safeCurrent ? "is-complete" : undefined} key={marker} />
+              ))}
               <b />
             </div>
             <div className="sequence-cue__markers">
-              <span>01</span><span>02</span><span>03</span><span>04</span>
+              {markers.map((marker) => (
+                <span key={marker}>{String(marker).padStart(2, "0")}</span>
+              ))}
             </div>
             <span className="sequence-cue__timecode">TC 00:{index}:00:00</span>
           </div>
@@ -220,12 +251,20 @@ export default function Home() {
                 id={`work-${project.index}`}
                 key={project.index}
               >
+                <SequenceCue
+                  index={project.index}
+                  label={project.title}
+                  detail={project.english}
+                  total="06"
+                  compact
+                />
+
                 <div className="project__header" data-reveal={Number(project.index) % 2 ? "left" : "right"}>
                   <span className="project__number">{project.index}</span>
                   <div>
                     <span className="project__category">{project.category}</span>
                     <h3>{project.title}</h3>
-                    <p lang="en">{project.english}</p>
+                    {project.english !== project.title && <p lang="en">{project.english}</p>}
                   </div>
                   <span className="project__duration">{project.duration}</span>
                 </div>
@@ -305,9 +344,10 @@ export default function Home() {
         </section>
 
         <SequenceCue
-          index="03"
+          index="05"
           label="PLATFORM RECORD"
           detail="ARCHIVE / ORIGINAL PLATFORM CAPTURE"
+          total="06"
         />
 
         <section className="record section" aria-labelledby="record-title">
@@ -334,9 +374,10 @@ export default function Home() {
         </section>
 
         <SequenceCue
-          index="04"
+          index="06"
           label="PROFILE SPACE"
           detail="CREATOR / CONTACT / AVAILABILITY"
+          total="06"
         />
 
         <section className="profile section" id="profile" aria-labelledby="profile-title">
@@ -406,8 +447,16 @@ export default function Home() {
           </h2>
           <p data-reveal="up">从漫剧到情感短剧，从都市故事到汽车影像——让想象抵达下一帧。</p>
           <div className="closing__cta" data-reveal="up">
-            <a className="button button--primary" href="mailto:psc_2ed@outlook.com" data-magnetic>
-              <span>联系我</span> <b aria-hidden="true">↗</b>
+            <a
+              className="button button--primary"
+              href="./resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              type="application/pdf"
+              aria-label="在新标签页查看毛大明的简历（PDF）"
+              data-magnetic
+            >
+              <span>我的简历</span> <b aria-hidden="true">↗</b>
             </a>
             <a className="button button--ghost" href="#top" data-magnetic><span>返回顶部</span> <b aria-hidden="true">↑</b></a>
           </div>

@@ -67,9 +67,9 @@ for (const entryName of ["index.html", "index.rsc"]) {
   const entryPath = join(outputDirectory, entryName);
   const normalized = readFileSync(entryPath, "utf8")
     .replaceAll("/./_next/", "./_next/")
-    .replace(/([\"'=])\/_next\//g, "$1./_next/");
+    .replace(/(["'=])\/_next\//g, "$1./_next/");
 
-  if (/([\"'=])\/(?:\.\/)?_next\//.test(normalized)) {
+  if (/(["'=])\/(?:\.\/)?_next\//.test(normalized)) {
     throw new Error(`${entryName} still contains a root-relative _next asset URL.`);
   }
 

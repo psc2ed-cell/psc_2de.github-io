@@ -25,6 +25,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
   background: var(--bg);
 }
 
@@ -936,6 +937,8 @@ video {
   font-weight: 850;
   letter-spacing: -0.07em;
   line-height: 0.95;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
 }
 
 .project__header p {
@@ -1265,7 +1268,7 @@ video {
 
 /* ============ 剪辑时间线章节提示 SequenceCue ============ */
 .sequence-cue {
-  --cue-progress: 66.666%;
+  --cue-progress: 0%;
   position: relative;
   display: grid;
   width: 100%;
@@ -1280,10 +1283,6 @@ video {
     linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px),
     #060708;
   background-size: auto, 32px 32px, 32px 32px, auto;
-}
-
-.sequence-cue[data-scene="04"] {
-  --cue-progress: 100%;
 }
 
 .sequence-cue::before {
@@ -1408,7 +1407,10 @@ video {
 
 .sequence-cue__track {
   position: relative;
+  display: flex;
   height: 15px;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 .sequence-cue__track::before,
@@ -1433,24 +1435,18 @@ video {
 }
 
 .sequence-cue__track i {
-  position: absolute;
+  position: relative;
   top: 4px;
   z-index: 2;
   width: 7px;
   height: 7px;
-  transform: translateX(-50%);
+  flex: 0 0 7px;
   border: 1px solid rgba(241, 243, 237, 0.46);
   border-radius: 50%;
   background: #080a0a;
 }
 
-.sequence-cue__track i:nth-child(1) { left: 0; }
-.sequence-cue__track i:nth-child(2) { left: 33.333%; }
-.sequence-cue__track i:nth-child(3) { left: 66.666%; }
-.sequence-cue__track i:nth-child(4) { left: 100%; }
-
-.sequence-cue[data-scene="03"] .sequence-cue__track i:nth-child(-n + 3),
-.sequence-cue[data-scene="04"] .sequence-cue__track i {
+.sequence-cue__track i.is-complete {
   border-color: var(--acid);
   background: var(--acid);
   box-shadow: 0 0 10px rgba(199, 255, 50, 0.6);
@@ -1470,20 +1466,37 @@ video {
 }
 
 .sequence-cue__markers {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  justify-content: space-between;
   margin-top: 2px;
   color: var(--muted);
   font-size: 0.49rem;
 }
 
-.sequence-cue__markers span:nth-child(2),
-.sequence-cue__markers span:nth-child(3) {
-  text-align: center;
+/* 作品之间使用紧凑章节提示，保留节奏但减少无效滚动距离。 */
+.sequence-cue--compact {
+  min-height: clamp(180px, 22svh, 250px);
+  margin-bottom: clamp(42px, 5vw, 76px);
 }
 
-.sequence-cue__markers span:last-child {
-  text-align: right;
+.sequence-cue--compact .sequence-cue__inner {
+  width: 100%;
+  min-height: 178px;
+  grid-template-columns: minmax(150px, 0.4fr) minmax(0, 1.6fr);
+}
+
+.sequence-cue--compact .sequence-cue__number,
+.sequence-cue--compact .sequence-cue__console {
+  padding: clamp(18px, 2vw, 28px);
+}
+
+.sequence-cue--compact .sequence-cue__number strong {
+  font-size: clamp(4.7rem, 7vw, 7.4rem);
+}
+
+.sequence-cue--compact .sequence-cue__title {
+  margin-top: 18px;
+  font-size: clamp(2.2rem, 4.3vw, 4.8rem);
 }
 
 .sequence-cue__timecode {
@@ -2325,7 +2338,7 @@ video {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .is-loaded .topbar { animation: topbar-enter 560ms 80ms var(--ease-out) both; }
+  .is-loaded .topbar { animation: topbar-enter 560ms 80ms var(--ease-out) backwards; }
   .is-loaded .hero__meta { animation: hero-rise 520ms 260ms var(--ease-out) both; }
   .is-loaded .hero__kicker { animation: hero-rise 560ms 340ms var(--ease-out) both; }
   .is-loaded .hero__outline { animation: hero-title-in 720ms 420ms var(--ease-out) both; }
@@ -2467,7 +2480,12 @@ video {
   .topbar {
     grid-template-columns: 1fr auto;
     min-height: 68px;
+    background: rgba(6, 7, 8, 0.94);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
+
+  .is-loaded .topbar { animation: hero-fade 360ms 80ms ease backwards; }
 
   .nav {
     position: fixed;
@@ -2600,7 +2618,7 @@ video {
   .project { padding: 52px 0 90px; }
   .project__header { grid-template-columns: 48px 1fr; gap: 14px; }
   .project__number { font-size: 2.7rem; }
-  .project__header h3 { font-size: 2.75rem; }
+  .project__header h3 { font-size: clamp(2.1rem, 10vw, 2.75rem); line-height: 1.02; }
   .project__category { font-size: 0.6rem; }
   .monitor-bar { min-height: 37px; padding: 0 10px; font-size: 0.51rem; letter-spacing: 0.1em; }
   .corner { width: 16px; height: 16px; }
@@ -2646,6 +2664,50 @@ video {
   .sequence-cue__detail { font-size: 0.48rem; line-height: 1.35; letter-spacing: 0.13em; }
   .sequence-cue__timeline { padding-top: 16px; }
   .sequence-cue__timecode { font-size: 0.45rem; letter-spacing: 0.1em; }
+  .sequence-cue--compact {
+    min-height: 0;
+    padding: 0;
+    margin-bottom: 42px;
+  }
+  .sequence-cue--compact .sequence-cue__inner {
+    width: 100%;
+    min-height: 148px;
+    grid-template-columns: 84px minmax(0, 1fr);
+  }
+  .sequence-cue--compact .sequence-cue__number {
+    display: flex;
+    min-height: 148px;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    border-right: 1px solid var(--line);
+    border-bottom: 0;
+  }
+  .sequence-cue--compact .sequence-cue__number > span,
+  .sequence-cue--compact .sequence-cue__number > small,
+  .sequence-cue--compact .sequence-cue__detail,
+  .sequence-cue--compact .sequence-cue__status span:last-child {
+    display: none;
+  }
+  .sequence-cue--compact .sequence-cue__number strong {
+    display: block;
+    font-size: 3.8rem;
+  }
+  .sequence-cue--compact .sequence-cue__console {
+    min-height: 148px;
+    padding: 14px 16px;
+  }
+  .sequence-cue--compact .sequence-cue__status {
+    padding-bottom: 10px;
+  }
+  .sequence-cue--compact .sequence-cue__title {
+    margin-top: 12px;
+    font-size: clamp(1.65rem, 7.4vw, 2.25rem);
+    line-height: 0.92;
+  }
+  .sequence-cue--compact .sequence-cue__timeline {
+    padding-top: 13px;
+  }
   .capability-grid { grid-template-columns: 1fr; }
   .capability-grid li { min-height: 190px; }
   .capability-grid h3 { margin-top: 54px; }
@@ -2654,7 +2716,7 @@ video {
   .profile__bio { padding-left: 16px; }
   .closing { min-height: 70svh; }
   .closing h2 { font-size: clamp(3.6rem, 19vw, 6.5rem); }
-  .footer { padding: 34px 18px; }
+  .footer { padding: 34px 18px calc(112px + env(safe-area-inset-bottom, 0px)); }
 }
 
 @media (prefers-reduced-motion: reduce) {
