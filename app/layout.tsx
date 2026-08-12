@@ -55,6 +55,52 @@ const refreshEntryScript = `
   })();
 `;
 
+const videoCoverScript = `
+  (() => {
+    const targetVideos = new Set([
+      "media/project-upgrade.mp4",
+      "media/project-breakoff.mp4",
+      "media/project-master-descends.mp4",
+    ]);
+
+    const prepareVideoCovers = () => {
+      document.querySelectorAll("video").forEach((video) => {
+        const source = video.querySelector("source");
+        const src = source?.getAttribute("src") || "";
+        if (!targetVideos.has(src)) return;
+
+        video.removeAttribute("poster");
+        video.preload = "metadata";
+
+        const showFirstFrame = () => {
+          if (!Number.isFinite(video.duration) || video.duration <= 0) return;
+          if (video.currentTime > 0) return;
+          try {
+            video.currentTime = Math.min(0.04, Math.max(0.01, video.duration / 1000));
+          } catch {
+            // Ignore browsers that temporarily reject an early seek.
+          }
+        };
+
+        if (video.readyState >= 1) showFirstFrame();
+        else video.addEventListener("loadedmetadata", showFirstFrame, { once: true });
+
+        video.addEventListener("seeked", () => {
+          if (!video.paused) video.pause();
+        }, { once: true });
+
+        video.load();
+      });
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", prepareVideoCovers, { once: true });
+    } else {
+      prepareVideoCovers();
+    }
+  })();
+`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title,
@@ -84,7 +130,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <head>
         <script id="refresh-entry-reset" dangerouslySetInnerHTML={{ __html: refreshEntryScript }} />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <script id="video-first-frame-covers" dangerouslySetInnerHTML={{ __html: videoCoverScript }} />
+      </body>
     </html>
   );
 }
