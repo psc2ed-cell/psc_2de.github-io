@@ -250,6 +250,7 @@ export default function Home() {
                 className={`project project--${project.accent}`}
                 id={`work-${project.index}`}
                 key={project.index}
+                aria-label={`作品：${project.title}`}
               >
                 <SequenceCue
                   index={project.index}
@@ -263,8 +264,6 @@ export default function Home() {
                   <span className="project__number">{project.index}</span>
                   <div>
                     <span className="project__category">{project.category}</span>
-                    <h3>{project.title}</h3>
-                    {project.english !== project.title && <p lang="en">{project.english}</p>}
                   </div>
                   <span className="project__duration">{project.duration}</span>
                 </div>
