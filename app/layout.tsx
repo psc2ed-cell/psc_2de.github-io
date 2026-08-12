@@ -55,6 +55,31 @@ const refreshEntryScript = `
   })();
 `;
 
+const hdPosterScript = `
+  (() => {
+    const posters = {
+      "media/project-upgrade.mp4": "media/穿成镇北王.png",
+      "media/project-breakoff.mp4": "media/缘尽安好.png",
+      "media/project-master-descends.mp4": "media/高手下山.png",
+    };
+
+    const applyPosters = () => {
+      document.querySelectorAll("video").forEach((video) => {
+        const source = video.querySelector("source");
+        const src = source?.getAttribute("src") || "";
+        const poster = posters[src];
+        if (poster) video.setAttribute("poster", poster);
+      });
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", applyPosters, { once: true });
+    } else {
+      applyPosters();
+    }
+  })();
+`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title,
@@ -84,7 +109,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <head>
         <script id="refresh-entry-reset" dangerouslySetInnerHTML={{ __html: refreshEntryScript }} />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <script id="hd-project-posters" dangerouslySetInnerHTML={{ __html: hdPosterScript }} />
+      </body>
     </html>
   );
 }
