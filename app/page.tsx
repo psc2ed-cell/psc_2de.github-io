@@ -44,20 +44,6 @@ const projects = [
     poster: "media/poster-breakoff.webp",
     accent: "rose",
   },
-  {
-    index: "04",
-    title: "等一束光",
-    english: "WAITING FOR A LIGHT",
-    category: "情感剧情短片",
-    duration: "00:54",
-    format: "1080P / 30 FPS",
-    note: "完整成片",
-    description:
-      "医院长廊里，一束红玫瑰连接等待、误解与温柔回应。以克制的表演和干净的空间调度承载情绪。",
-    video: "media/project-light.mp4",
-    poster: "media/poster-light.webp",
-    accent: "blue",
-  },
 ];
 
 const capabilities = [
@@ -147,7 +133,7 @@ export default function Home() {
         </div>
         <div className="preloader__progress"><i /></div>
         <span className="preloader__meta preloader__meta--a">LOADING REEL · 2026</span>
-        <span className="preloader__meta preloader__meta--b">FRAME 0004 / 0004</span>
+        <span className="preloader__meta preloader__meta--b">FRAME 0003 / 0003</span>
         <span className="preloader__corner preloader__corner--tl" />
         <span className="preloader__corner preloader__corner--tr" />
         <span className="preloader__corner preloader__corner--bl" />
@@ -176,7 +162,7 @@ export default function Home() {
           <a href="#profile">个人信息</a>
         </nav>
         <div className="signal-tag">
-          <i aria-hidden="true" /> 04 FILMS / ONLINE
+          <i aria-hidden="true" /> 03 FILMS / ONLINE
         </div>
         <div className="scroll-progress" aria-hidden="true"><span /></div>
       </header>
@@ -185,7 +171,7 @@ export default function Home() {
         <section className="hero" id="top" aria-labelledby="hero-title">
           <div className="hero__meta">
             <span>AI FILM / STORY / COMMERCIAL</span>
-            <span>BASED IN 杭州</span>
+            <span>END-TO-END AIGC PRODUCTION</span>
           </div>
 
           <div className="hero__copy">
@@ -201,7 +187,7 @@ export default function Home() {
                 推进到下一帧。
               </p>
               <div>
-                <span>3D 漫剧 · 情感短片 · 汽车影像</span>
+                <span>3D 漫剧 · 现代情感短剧 · 汽车影像</span>
                 <a className="button button--primary" href="#works" data-magnetic>
                   <span>浏览全部作品</span> <b aria-hidden="true">↘</b>
                 </a>
@@ -216,7 +202,7 @@ export default function Home() {
             <div className="motion-engine__axis motion-engine__axis--x" />
             <div className="motion-engine__axis motion-engine__axis--y" />
             <div className="motion-engine__core">
-              <strong>04</strong>
+              <strong>03</strong>
               <span>SELECTED FILMS</span>
             </div>
             <span className="engine-readout engine-readout--a">SIGNAL / ACTIVE</span>
@@ -235,7 +221,7 @@ export default function Home() {
           <div className="section-heading" data-reveal="up">
             <div>
               <span className="section-index">01 / SELECTED WORKS</span>
-              <h2 id="works-title">四部成片，四种推进方式。</h2>
+              <h2 id="works-title">三部成片，三种推进方式。</h2>
             </div>
             <p>
               从完整成片出发，呈现不同题材中的叙事、表演与节奏控制。
@@ -255,7 +241,7 @@ export default function Home() {
                   index={project.index}
                   label={project.title}
                   detail={project.english}
-                  total="06"
+                  total="05"
                   compact
                 />
 
@@ -344,10 +330,10 @@ export default function Home() {
         </section>
 
         <SequenceCue
-          index="05"
+          index="04"
           label="PLATFORM RECORD"
           detail="ARCHIVE / ORIGINAL PLATFORM CAPTURE"
-          total="06"
+          total="05"
         />
 
         <section className="record section" aria-labelledby="record-title">
@@ -374,10 +360,10 @@ export default function Home() {
         </section>
 
         <SequenceCue
-          index="06"
+          index="05"
           label="PROFILE SPACE"
           detail="CREATOR / CONTACT / AVAILABILITY"
-          total="06"
+          total="05"
         />
 
         <section className="profile section" id="profile" aria-labelledby="profile-title">
@@ -394,7 +380,7 @@ export default function Home() {
                 <b>PETER MAO</b>
                 <small>AI FILM CREATOR / DIRECTOR</small>
               </div>
-              <span className="profile-card__count">SELECTED WORKS / 04</span>
+              <span className="profile-card__count">SELECTED WORKS / 03</span>
             </div>
           </div>
 

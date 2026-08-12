@@ -4,7 +4,7 @@ import "./globals.css";
 const siteUrl = "https://psc2ed-cell.github.io/psc_2de.github-io/";
 const ogImage = `${siteUrl}og.png`;
 const title = "毛大明 Peter｜AI 影像作品集 — MOTION / MAKER";
-const description = "毛大明（Peter）的 AI 影像作品集，涵盖 3D 国风漫剧、情感短片、都市短剧与非商用汽车概念影像。";
+const description = "毛大明（Peter）的 AI 影像作品集，涵盖 3D 国风漫剧、现代情感短剧与非商用汽车概念影像。";
 const refreshEntryScript = `
   (() => {
     const entries = typeof performance.getEntriesByType === "function"

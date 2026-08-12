@@ -891,7 +891,6 @@ video {
   padding-bottom: 0;
 }
 
-.project--blue { --accent: var(--blue); }
 .project--rose { --accent: var(--rose); }
 .project--orange { --accent: var(--orange); }
 
