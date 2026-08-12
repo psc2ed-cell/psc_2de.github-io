@@ -44,12 +44,26 @@ const projects = [
     poster: "media/poster-breakoff.webp",
     accent: "rose",
   },
+  {
+    index: "04",
+    title: "高手下山，我不当赘婿",
+    english: "MASTER DESCENDS",
+    category: "都市玄幻 AI 短剧",
+    duration: "01:42",
+    format: "720 × 1280 / 30 FPS",
+    note: "全链路制作 · 竖屏完整成片",
+    description:
+      "参与赌场对峙单元全链路制作：基于剧本拆解作弊揭穿与身份反转，统筹角色、赌场场景及扑克牌、面具等关键资产；推进镜头生成与节点迭代，校准群像站位、人物一致性、视线衔接和面具破碎动作，完成剪辑、字幕、声音及竖屏成片输出。",
+    video: "media/project-master-descends.mp4",
+    poster: "media/poster-master-descends.webp",
+    accent: "blue",
+  },
 ];
 
 const capabilities = [
   ["01", "3D 国风漫剧", "角色、场景、动作与连续叙事"],
   ["02", "情感剧情", "表演、情绪与生活化空间"],
-  ["03", "都市短剧", "对话节奏与人物关系推进"],
+  ["03", "都市玄幻短剧", "动作、悬念与身份反转"],
   ["04", "汽车影像", "产品质感、速度与声音设计"],
 ];
 
@@ -133,7 +147,7 @@ export default function Home() {
         </div>
         <div className="preloader__progress"><i /></div>
         <span className="preloader__meta preloader__meta--a">LOADING REEL · 2026</span>
-        <span className="preloader__meta preloader__meta--b">FRAME 0003 / 0003</span>
+        <span className="preloader__meta preloader__meta--b">FRAME 0004 / 0004</span>
         <span className="preloader__corner preloader__corner--tl" />
         <span className="preloader__corner preloader__corner--tr" />
         <span className="preloader__corner preloader__corner--bl" />
@@ -162,7 +176,7 @@ export default function Home() {
           <a href="#profile">个人信息</a>
         </nav>
         <div className="signal-tag">
-          <i aria-hidden="true" /> 03 FILMS / ONLINE
+          <i aria-hidden="true" /> 04 FILMS / ONLINE
         </div>
         <div className="scroll-progress" aria-hidden="true"><span /></div>
       </header>
@@ -187,7 +201,7 @@ export default function Home() {
                 推进到下一帧。
               </p>
               <div>
-                <span>3D 漫剧 · 现代情感短剧 · 汽车影像</span>
+                <span>3D 漫剧 · 都市玄幻短剧 · 情感短剧 · 汽车影像</span>
                 <a className="button button--primary" href="#works" data-magnetic>
                   <span>浏览全部作品</span> <b aria-hidden="true">↘</b>
                 </a>
@@ -202,7 +216,7 @@ export default function Home() {
             <div className="motion-engine__axis motion-engine__axis--x" />
             <div className="motion-engine__axis motion-engine__axis--y" />
             <div className="motion-engine__core">
-              <strong>03</strong>
+              <strong>04</strong>
               <span>SELECTED FILMS</span>
             </div>
             <span className="engine-readout engine-readout--a">SIGNAL / ACTIVE</span>
@@ -221,7 +235,7 @@ export default function Home() {
           <div className="section-heading" data-reveal="up">
             <div>
               <span className="section-index">01 / SELECTED WORKS</span>
-              <h2 id="works-title">三部成片，三种推进方式。</h2>
+              <h2 id="works-title">四部成片，四种推进方式。</h2>
             </div>
             <p>
               从完整成片出发，呈现不同题材中的叙事、表演与节奏控制。
@@ -241,7 +255,7 @@ export default function Home() {
                   index={project.index}
                   label={project.title}
                   detail={project.english}
-                  total="05"
+                  total="06"
                   compact
                 />
 
@@ -330,10 +344,10 @@ export default function Home() {
         </section>
 
         <SequenceCue
-          index="04"
+          index="05"
           label="PLATFORM RECORD"
           detail="ARCHIVE / ORIGINAL PLATFORM CAPTURE"
-          total="05"
+          total="06"
         />
 
         <section className="record section" aria-labelledby="record-title">
@@ -360,10 +374,10 @@ export default function Home() {
         </section>
 
         <SequenceCue
-          index="05"
+          index="06"
           label="PROFILE SPACE"
           detail="CREATOR / CONTACT / AVAILABILITY"
-          total="05"
+          total="06"
         />
 
         <section className="profile section" id="profile" aria-labelledby="profile-title">
@@ -380,7 +394,7 @@ export default function Home() {
                 <b>PETER MAO</b>
                 <small>AI FILM CREATOR / DIRECTOR</small>
               </div>
-              <span className="profile-card__count">SELECTED WORKS / 03</span>
+              <span className="profile-card__count">SELECTED WORKS / 04</span>
             </div>
           </div>
 
@@ -389,7 +403,7 @@ export default function Home() {
             <p className="profile__eyebrow">AI 影像创作者 / DIRECTOR</p>
             <h2 id="profile-title">毛大明 / Peter</h2>
             <p className="profile__bio">
-              AI 影像创作者与导演，专注 AIGC 驱动的内容生产，作品覆盖 3D 国风漫剧、情感短剧与汽车概念影像。
+              AI 影像创作者与导演，专注 AIGC 驱动的内容生产，作品覆盖 3D 国风漫剧、都市玄幻 AI 短剧、情感短剧与汽车概念影像。
               从角色塑造、情绪调度到连续叙事，追求“把想象推进到下一帧”的镜头表达；
               熟悉从创意、分镜到成片的 AI 制作全流程，期待与团队共创下一部作品。
             </p>

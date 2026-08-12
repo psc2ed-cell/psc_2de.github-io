@@ -893,6 +893,7 @@ video {
 
 .project--rose { --accent: var(--rose); }
 .project--orange { --accent: var(--orange); }
+.project--blue { --accent: var(--blue); }
 
 .project::before {
   position: absolute;
