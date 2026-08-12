@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./portfolio-overrides.css";
 
 const siteUrl = "https://psc2ed-cell.github.io/psc_2de.github-io/";
 const ogImage = `${siteUrl}og.png`;
