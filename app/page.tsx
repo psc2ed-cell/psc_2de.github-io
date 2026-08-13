@@ -239,7 +239,7 @@ export default function Home() {
             <p>
               从完整成片出发，呈现不同题材中的叙事、表演与节奏控制。
               <br />
-              点击播放器，即可观看轻量展示版。
+              点击播放器，即可观看高清展示版。
             </p>
           </div>
 
@@ -464,7 +464,7 @@ export default function Home() {
       <footer className="footer">
         <div className="footer__brand">MOTION <span>/</span> MAKER</div>
         <div className="footer__legal">
-          <p>个人作品集；部分项目包含 AIGC 生成 / 辅助画面与合成音频。网页使用轻量代理版本，原始成片保持不变。</p>
+          <p>个人作品集；部分项目包含 AIGC 生成 / 辅助画面与合成音频。网页使用高清展示版本，兼顾原画质与在线播放体验。</p>
           <p>
             YU7 GT 为非商用、非官方个人概念作品，与小米集团无隶属或合作关系；
             Xiaomi、小米及相关产品素材与商标归各自权利人所有。
