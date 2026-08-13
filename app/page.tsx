@@ -360,12 +360,12 @@ export default function Home() {
           </div>
           <figure className="record__image" data-reveal="right">
             <img
-              src="media/platform-record.webp"
+              src="media/platform-record.jpg"
               alt="红果平台漫剧新剧榜榜单原始截图"
               loading="lazy"
               decoding="async"
-              width="900"
-              height="2000"
+              width="1080"
+              height="2400"
             />
             <figcaption>红果漫剧新剧榜 · 第 4 位 · 截图时点热度 4644 万</figcaption>
           </figure>
