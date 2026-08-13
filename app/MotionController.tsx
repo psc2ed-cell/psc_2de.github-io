@@ -158,6 +158,12 @@ export function MotionController() {
         if (frame) frame.dataset.playback = state;
       };
       const onPlay = () => {
+        if (video.paused || video.ended) return;
+        videos.forEach((otherVideo) => {
+          if (otherVideo !== video && !otherVideo.paused && !otherVideo.ended) {
+            otherVideo.pause();
+          }
+        });
         setState("playing");
         syncVideoState();
       };
@@ -212,3 +218,4 @@ export function MotionController() {
 
   return null;
 }
+
