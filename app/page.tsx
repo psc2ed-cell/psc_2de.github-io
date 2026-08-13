@@ -1,6 +1,12 @@
 import type { CSSProperties } from "react";
 import { MotionController } from "./MotionController";
 
+const videoBaseUrl = process.env.NEXT_PUBLIC_VIDEO_BASE_URL?.trim().replace(/\/+$/, "");
+
+function getVideoUrl(filename: string) {
+  return videoBaseUrl ? `${videoBaseUrl}/${filename}` : `media/${filename}`;
+}
+
 const projects = [
   {
     index: "01",
@@ -12,7 +18,7 @@ const projects = [
     note: "展示版含原始水印",
     description:
       "以堂审、人物对峙与兵刃动作推进大殿冲突，用人物近景和群像站位持续抬高近两分钟场面的戏剧张力。",
-    video: "media/project-upgrade.mp4",
+    video: getVideoUrl("project-upgrade.mp4"),
     poster: "media/poster-upgrade.webp",
     accent: "orange",
   },
@@ -26,7 +32,7 @@ const projects = [
     note: "个人概念作品 / 非官方",
     description:
       "从暗棚揭车、GT 启动与方向盘特写，到赛道追拍、海岸夜路与霓虹城市，用冷蓝黑与红色尾灯完成由静至动的性能表达。",
-    video: "media/project-yu7.mp4",
+    video: getVideoUrl("project-yu7.mp4"),
     poster: "media/poster-yu7.webp",
     accent: "acid",
   },
@@ -40,7 +46,7 @@ const projects = [
     note: "展示版含原始水印",
     description:
       "咖啡馆里，电话、桌号与等待交织成一次错位会面。暖色空间与克制近景，让两个人身处咫尺却始终没有真正相见。",
-    video: "media/project-breakoff.mp4",
+    video: getVideoUrl("project-breakoff.mp4"),
     poster: "media/poster-breakoff.webp",
     accent: "rose",
   },
@@ -54,7 +60,7 @@ const projects = [
     note: "全链路制作 · 竖屏完整成片",
     description:
       "参与赌场对峙单元全链路制作：基于剧本拆解作弊揭穿与身份反转，统筹角色、赌场场景及扑克牌、面具等关键资产；推进镜头生成与节点迭代，校准群像站位、人物一致性、视线衔接和面具破碎动作，完成剪辑、字幕、声音及竖屏成片输出。",
-    video: "media/project-master-descends.mp4",
+    video: getVideoUrl("project-master-descends.mp4"),
     poster: "media/poster-master-descends.webp",
     accent: "blue",
   },
@@ -475,3 +481,4 @@ export default function Home() {
     </>
   );
 }
+

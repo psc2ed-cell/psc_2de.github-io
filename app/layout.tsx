@@ -58,16 +58,17 @@ const refreshEntryScript = `
 const hdPosterScript = `
   (() => {
     const posters = {
-      "media/project-upgrade.mp4": "media/穿成镇北王.png",
-      "media/project-breakoff.mp4": "media/缘尽安好.png",
-      "media/project-master-descends.mp4": "media/高手下山.png",
+      "project-upgrade.mp4": "media/穿成镇北王.png",
+      "project-breakoff.mp4": "media/缘尽安好.png",
+      "project-master-descends.mp4": "media/高手下山.png",
     };
 
     const applyPosters = () => {
       document.querySelectorAll("video").forEach((video) => {
         const source = video.querySelector("source");
         const src = source?.getAttribute("src") || "";
-        const poster = posters[src];
+        const filename = src.split(/[?#]/)[0].split("/").pop() || "";
+        const poster = posters[filename];
         if (poster) video.setAttribute("poster", poster);
       });
     };
@@ -116,3 +117,4 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     </html>
   );
 }
+
