@@ -32,7 +32,7 @@ const projects = [
   },
   {
     index: "03",
-    title: "退婚后，他闪耀人生",
+    title: "缘定安好，她向阳而生",
     english: "AFTER THE BREAKUP",
     category: "现代情感短剧",
     duration: "00:56",
@@ -157,7 +157,6 @@ export default function Home() {
       <a className="skip-link" href="#main-content">
         跳到主要内容
       </a>
-
       <div className="ambient" aria-hidden="true">
         <span className="ambient__grid" />
         <span className="ambient__beam ambient__beam--one" />
