@@ -35,6 +35,16 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Generate resume PDF
+        shell: bash
+        run: |
+          set -euo pipefail
+          google-chrome --headless --disable-gpu --no-sandbox \
+            --no-pdf-header-footer \
+            --print-to-pdf="$GITHUB_WORKSPACE/public/resume.pdf" \
+            "file://$GITHUB_WORKSPACE/.github/resume-source.html"
+          test -s public/resume.pdf
+
       - name: Build static site
         env:
           NEXT_PUBLIC_VIDEO_BASE_URL: "https://maodaming-portfolio-2026.oss-cn-hangzhou.aliyuncs.com/media"
@@ -59,4 +69,3 @@ jobs:
           fi
           git commit -m "Deploy latest main to GitHub Pages"
           git push origin gh-pages
-
