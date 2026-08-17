@@ -58,8 +58,8 @@ const refreshEntryScript = `
 const hdPosterScript = `
   (() => {
     const posters = {
-      "project-upgrade.mp4": "media/穿成镇北王.png",
-      "project-breakoff.mp4": "media/缘尽安好.png",
+      "project-upgrade.mp4": "covers/poster-upgrade.jpg",
+      "project-breakoff.mp4": "covers/poster-breakoff.png",
       "project-master-descends.mp4": "media/高手下山.png",
     };
 
@@ -117,4 +117,3 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     </html>
   );
 }
-
