@@ -47,7 +47,7 @@ const projects = [
   },
   {
     index: "04",
-    title: "Xiaomi YU7 GT｜个人创作概念 TVC（非商用）",
+    title: "XIAOMI YU7 GT / SPEC FILM · 个人非商用 TVC",
     english: "XIAOMI YU7 GT / SPEC FILM",
     category: "个人非商用 TVC",
     duration: "00:40",
@@ -386,15 +386,10 @@ export default function Home() {
                 <span>EMAIL / 邮箱</span>
                 <strong>psc_2ed@outlook.com</strong>
               </a>
-              <details className="phone-reveal">
-                <summary>
-                  <span>PHONE / 手机号</span>
-                  <i aria-hidden="true" />
-                </summary>
-                <a className="phone-reveal__number" href="tel:13206872352" aria-label="拨打 13206872352">
-                  13206872352
-                </a>
-              </details>
+              <a href="tel:13206872352" aria-label="拨打 13206872352">
+                <span>PHONE / 手机号</span>
+                <strong>13206872352</strong>
+              </a>
             </div>
           </div>
         </section>
