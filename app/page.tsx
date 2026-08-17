@@ -404,17 +404,6 @@ export default function Home() {
           </h2>
           <p data-reveal="up">从漫剧到情感短剧，从都市故事到汽车影像——让想象抵达下一帧。</p>
           <div className="closing__cta" data-reveal="up">
-            <a
-              className="button button--primary"
-              href="./resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              type="application/pdf"
-              aria-label="在新标签页查看毛大明的简历（PDF）"
-              data-magnetic
-            >
-              <span>我的简历</span> <b aria-hidden="true">↗</b>
-            </a>
             <a className="button button--ghost" href="#top" data-magnetic><span>返回顶部</span> <b aria-hidden="true">↑</b></a>
           </div>
         </section>
