@@ -22,19 +22,6 @@ const projects = [
   },
   {
     index: "02",
-    title: "XIAOMI YU7 GT / SPEC FILM",
-    english: "XIAOMI YU7 GT / SPEC FILM",
-    category: "非商用汽车概念 TVC",
-    duration: "00:40",
-    note: "个人概念作品 / 非官方",
-    description:
-      "从暗棚揭车、GT 启动与方向盘特写，到赛道追拍、海岸夜路与霓虹城市，用冷蓝黑与红色尾灯完成由静至动的性能表达。",
-    video: getVideoUrl("project-yu7.mp4"),
-    poster: "media/poster-yu7.webp",
-    accent: "acid",
-  },
-  {
-    index: "03",
     title: "退婚后，她闪耀人生",
     english: "AFTER THE BREAKUP",
     category: "现代情感短剧",
@@ -46,7 +33,7 @@ const projects = [
     accent: "rose",
   },
   {
-    index: "04",
+    index: "03",
     title: "高手下山，我不当赘婿",
     english: "MASTER DESCENDS",
     category: "都市玄幻 AI 短剧",
@@ -57,6 +44,19 @@ const projects = [
     video: getVideoUrl("project-master-descends.mp4"),
     poster: "media/poster-master-descends.webp",
     accent: "blue",
+  },
+  {
+    index: "04",
+    title: "XIAOMI YU7 GT / SPEC FILM",
+    english: "XIAOMI YU7 GT / SPEC FILM",
+    category: "个人非商用 TVC",
+    duration: "00:40",
+    note: "个人概念作品 / 非官方",
+    description:
+      "从暗棚揭车、GT 启动与方向盘特写，到赛道追拍、海岸夜路与霓虹城市，用冷蓝黑与红色尾灯完成由静至动的性能表达。",
+    video: getVideoUrl("project-yu7.mp4"),
+    poster: "media/poster-yu7.webp",
+    accent: "acid",
   },
 ];
 
