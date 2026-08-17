@@ -10,16 +10,14 @@ function getVideoUrl(filename: string) {
 const projects = [
   {
     index: "01",
-    title: "穿成镇北王，谁惯着退婚长公主",
+    title: "升级有奖",
     english: "VALIANT PRINCE",
-    category: "上线漫剧 · 古装玄幻",
+    category: "古装玄幻",
     duration: "01:59",
-    format: "1080P / 25 FPS",
-    note: "展示版含原始水印",
     description:
       "以堂审、人物对峙与兵刃动作推进大殿冲突，用人物近景和群像站位持续抬高近两分钟场面的戏剧张力。",
     video: getVideoUrl("project-upgrade.mp4"),
-    poster: "media/poster-upgrade.webp",
+    poster: "covers/poster-upgrade.jpg",
     accent: "orange",
   },
   {
@@ -28,7 +26,6 @@ const projects = [
     english: "XIAOMI YU7 GT / SPEC FILM",
     category: "非商用汽车概念 TVC",
     duration: "00:40",
-    format: "1080P / 24 FPS",
     note: "个人概念作品 / 非官方",
     description:
       "从暗棚揭车、GT 启动与方向盘特写，到赛道追拍、海岸夜路与霓虹城市，用冷蓝黑与红色尾灯完成由静至动的性能表达。",
@@ -38,16 +35,14 @@ const projects = [
   },
   {
     index: "03",
-    title: "缘定安好，她向阳而生",
+    title: "退婚后，她闪耀人生",
     english: "AFTER THE BREAKUP",
     category: "现代情感短剧",
     duration: "00:56",
-    format: "1080P / 30 FPS",
-    note: "展示版含原始水印",
     description:
       "咖啡馆里，电话、桌号与等待交织成一次错位会面。暖色空间与克制近景，让两个人身处咫尺却始终没有真正相见。",
     video: getVideoUrl("project-breakoff.mp4"),
-    poster: "media/poster-breakoff.webp",
+    poster: "covers/poster-breakoff.png",
     accent: "rose",
   },
   {
@@ -56,8 +51,7 @@ const projects = [
     english: "MASTER DESCENDS",
     category: "都市玄幻 AI 短剧",
     duration: "01:42",
-    format: "720 × 1280 / 30 FPS",
-    note: "全链路制作 · 竖屏完整成片",
+    note: "全链路制作",
     description:
       "参与赌场对峙单元全链路制作：基于剧本拆解作弊揭穿与身份反转，统筹角色、赌场场景及扑克牌、面具等关键资产；推进镜头生成与节点迭代，校准群像站位、人物一致性、视线衔接和面具破碎动作，完成剪辑、字幕、声音及竖屏成片输出。",
     video: getVideoUrl("project-master-descends.mp4"),
@@ -261,7 +255,7 @@ export default function Home() {
                   index={project.index}
                   label={project.title}
                   detail={project.english}
-                  total="06"
+                  total="05"
                   compact
                 />
 
@@ -276,7 +270,6 @@ export default function Home() {
                 <div className="project__media" data-reveal="clip">
                   <div className="monitor-bar">
                     <span><i /> MASTER / {project.index}</span>
-                    <span>{project.format}</span>
                   </div>
                   <div className="monitor-screen">
                     {/* Showcase masters contain their original baked presentation; separate caption tracks were not supplied. */}
@@ -301,11 +294,6 @@ export default function Home() {
 
                 <div className="project__footer" data-reveal="up">
                   <p>{project.description}</p>
-                  <dl>
-                    <div><dt>TYPE</dt><dd>{project.category}</dd></div>
-                    <div><dt>DELIVERY</dt><dd>{project.format}</dd></div>
-                    <div><dt>NOTE</dt><dd>{project.note}</dd></div>
-                  </dl>
                 </div>
               </article>
             ))}
@@ -349,39 +337,9 @@ export default function Home() {
 
         <SequenceCue
           index="05"
-          label="PLATFORM RECORD"
-          detail="ARCHIVE / ORIGINAL PLATFORM CAPTURE"
-          total="06"
-        />
-
-        <section className="record section" aria-labelledby="record-title">
-          <div className="record__copy" data-reveal="left">
-            <span className="section-index">03 / PLATFORM RECORD</span>
-            <h2 id="record-title">平台记录，保留原始证据。</h2>
-            <p>
-              本人参与制作的《穿成镇北王，谁惯着退婚长公主》于截图记录时位列红果漫剧新剧榜第 4 位，
-              榜单热度 4644 万。此处保留原始截图作为项目成绩留档，榜单名称、名次与数据均以截图为准。
-            </p>
-            <span className="record__note">RANK 04 / ORIGINAL SCREENSHOT</span>
-          </div>
-          <figure className="record__image" data-reveal="right">
-            <img
-              src="media/platform-record.jpg"
-              alt="红果平台漫剧新剧榜榜单原始截图"
-              loading="lazy"
-              decoding="async"
-              width="1080"
-              height="2400"
-            />
-            <figcaption>红果漫剧新剧榜 · 第 4 位 · 截图时点热度 4644 万</figcaption>
-          </figure>
-        </section>
-
-        <SequenceCue
-          index="06"
           label="PROFILE SPACE"
           detail="CREATOR / CONTACT / AVAILABILITY"
-          total="06"
+          total="05"
         />
 
         <section className="profile section" id="profile" aria-labelledby="profile-title">
@@ -403,7 +361,7 @@ export default function Home() {
           </div>
 
           <div className="profile__content" data-reveal="right">
-            <span className="section-index">04 / PROFILE SPACE</span>
+            <span className="section-index">03 / PROFILE SPACE</span>
             <p className="profile__eyebrow">AI 影像创作者 / DIRECTOR</p>
             <h2 id="profile-title">毛大明 / Peter</h2>
             <p className="profile__bio">
@@ -481,4 +439,3 @@ export default function Home() {
     </>
   );
 }
-
