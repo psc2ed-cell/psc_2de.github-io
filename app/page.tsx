@@ -354,7 +354,7 @@ export default function Home() {
               <strong className="profile-card__monogram"><i>P</i><em>/</em><i>M</i></strong>
               <div className="profile-card__identity">
                 <b>PETER MAO</b>
-                <small>AI FILM CREATOR / DIRECTOR</small>
+                <small>AI FILM CREATOR</small>
               </div>
               <span className="profile-card__count">SELECTED WORKS / 04</span>
             </div>
@@ -362,10 +362,10 @@ export default function Home() {
 
           <div className="profile__content" data-reveal="right">
             <span className="section-index">03 / PROFILE SPACE</span>
-            <p className="profile__eyebrow">AI 影像创作者 / DIRECTOR</p>
+            <p className="profile__eyebrow">AI 影像创作者</p>
             <h2 id="profile-title">毛大明 / Peter</h2>
             <p className="profile__bio">
-              AI 影像创作者与导演，专注 AIGC 驱动的内容生产，作品覆盖 3D 国风漫剧、都市玄幻 AI 短剧、情感短剧与汽车概念影像。
+              AI 影像创作者，专注 AIGC 驱动的内容生产，作品覆盖 3D 国风漫剧、都市玄幻 AI 短剧、情感短剧与汽车概念影像。
               从角色塑造、情绪调度到连续叙事，追求“把想象推进到下一帧”的镜头表达；
               熟悉从创意、分镜到成片的 AI 制作全流程，期待与团队共创下一部作品。
             </p>
@@ -373,7 +373,7 @@ export default function Home() {
             <div className="profile__fields">
               <div>
                 <span>ROLE / 职业定位</span>
-                <strong>AI 影像创作者 / 导演</strong>
+                <strong>AI 影像创作者</strong>
               </div>
               <div>
                 <span>EDUCATION / 学历</span>
