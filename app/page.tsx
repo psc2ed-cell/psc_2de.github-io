@@ -47,7 +47,7 @@ const projects = [
   },
   {
     index: "04",
-    title: "XIAOMI YU7 GT / SPEC FILM",
+    title: "XIAOMI YU7 GT / SPEC FILM · 个人非商用 TVC",
     english: "XIAOMI YU7 GT / SPEC FILM",
     category: "个人非商用 TVC",
     duration: "00:40",
