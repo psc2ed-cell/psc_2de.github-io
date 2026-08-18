@@ -55,32 +55,6 @@ const refreshEntryScript = `
   })();
 `;
 
-const hdPosterScript = `
-  (() => {
-    const posters = {
-      "project-upgrade.mp4": "covers/poster-upgrade.jpg",
-      "project-breakoff.mp4": "covers/poster-breakoff.png",
-      "project-master-descends.mp4": "media/高手下山.png",
-    };
-
-    const applyPosters = () => {
-      document.querySelectorAll("video").forEach((video) => {
-        const source = video.querySelector("source");
-        const src = source?.getAttribute("src") || "";
-        const filename = src.split(/[?#]/)[0].split("/").pop() || "";
-        const poster = posters[filename];
-        if (poster) video.setAttribute("poster", poster);
-      });
-    };
-
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", applyPosters, { once: true });
-    } else {
-      applyPosters();
-    }
-  })();
-`;
-
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title,
@@ -112,7 +86,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </head>
       <body>
         {children}
-        <script id="hd-project-posters" dangerouslySetInnerHTML={{ __html: hdPosterScript }} />
       </body>
     </html>
   );
