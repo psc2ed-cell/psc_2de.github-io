@@ -10,31 +10,29 @@ function getVideoUrl(filename: string) {
 const projects = [
   {
     index: "01",
-    title: "升级有奖",
+    title: "山河令主",
     english: "VALIANT PRINCE",
     category: "古装玄幻",
     duration: "01:59",
     description:
       "以堂审、人物对峙与兵刃动作推进大殿冲突，用人物近景和群像站位持续抬高近两分钟场面的戏剧张力。",
     video: getVideoUrl("project-upgrade.mp4"),
-    poster: "covers/poster-upgrade.jpg",
     accent: "orange",
   },
   {
     index: "02",
-    title: "退婚后，她闪耀人生",
+    title: "错位心动",
     english: "AFTER THE BREAKUP",
     category: "现代情感短剧",
     duration: "00:56",
     description:
       "咖啡馆里，电话、桌号与等待交织成一次错位会面。暖色空间与克制近景，让两个人身处咫尺却始终没有真正相见。",
     video: getVideoUrl("project-breakoff.mp4"),
-    poster: "covers/poster-breakoff.png",
     accent: "rose",
   },
   {
     index: "03",
-    title: "高手下山，我不当赘婿",
+    title: "破局",
     english: "MASTER DESCENDS",
     category: "都市玄幻 AI 短剧",
     duration: "01:42",
@@ -42,7 +40,6 @@ const projects = [
     description:
       "参与赌场对峙单元全链路制作：基于剧本拆解作弊揭穿与身份反转，统筹角色、赌场场景及扑克牌、面具等关键资产；推进镜头生成与节点迭代，校准群像站位、人物一致性、视线衔接和面具破碎动作，完成剪辑、字幕、声音及竖屏成片输出。",
     video: getVideoUrl("project-master-descends.mp4"),
-    poster: "media/poster-master-descends.webp",
     accent: "blue",
   },
   {
@@ -55,7 +52,6 @@ const projects = [
     description:
       "从暗棚揭车、GT 启动与方向盘特写，到赛道追拍、海岸夜路与霓虹城市，用冷蓝黑与红色尾灯完成由静至动的性能表达。",
     video: getVideoUrl("project-yu7.mp4"),
-    poster: "media/poster-yu7.webp",
     accent: "acid",
   },
 ];
@@ -279,7 +275,6 @@ export default function Home() {
                       controlsList="nodownload"
                       playsInline
                       preload="none"
-                      poster={project.poster}
                       aria-label={`播放《${project.title}》完整成片`}
                     >
                       <source src={project.video} type="video/mp4" />
