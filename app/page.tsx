@@ -276,7 +276,7 @@ export default function Home() {
                       controls
                       controlsList="nodownload"
                       playsInline
-                      preload="none"
+                      preload="metadata"
                       aria-label={`播放《${project.title}》完整成片`}
                     >
                       <source src={project.video} type="video/mp4" />
