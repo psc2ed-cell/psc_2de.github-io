@@ -179,11 +179,19 @@ export function MotionController() {
         event.preventDefault();
       };
       setState("ready");
+      const onLoadedMetadata = () => {
+        // 默认展示首帧画面（视频保持暂停状态）
+        if (video.paused) {
+          try { video.currentTime = 0.01; } catch { /* ignore */ }
+        }
+      };
+      video.addEventListener("loadedmetadata", onLoadedMetadata);
       video.addEventListener("play", onPlay);
       video.addEventListener("pause", onPause);
       video.addEventListener("ended", onEnded);
       video.addEventListener("contextmenu", onContextMenu);
       return () => {
+        video.removeEventListener("loadedmetadata", onLoadedMetadata);
         video.removeEventListener("play", onPlay);
         video.removeEventListener("pause", onPause);
         video.removeEventListener("ended", onEnded);
@@ -218,4 +226,3 @@ export function MotionController() {
 
   return null;
 }
-
