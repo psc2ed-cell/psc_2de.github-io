@@ -4,7 +4,9 @@ import { MotionController } from "./MotionController";
 const videoBaseUrl = process.env.NEXT_PUBLIC_VIDEO_BASE_URL?.trim().replace(/\/+$/, "");
 
 function getVideoUrl(filename: string) {
-  return videoBaseUrl ? `${videoBaseUrl}/${filename}` : `media/${filename}`;
+  const base = videoBaseUrl ? `${videoBaseUrl}/${filename}` : `media/${filename}`;
+  // 版本参数：视频更新后修改此值即可强制浏览器重新拉取，绕过缓存
+  return `${base}?v=20260818`;
 }
 
 const projects = [
